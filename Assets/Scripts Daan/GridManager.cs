@@ -18,9 +18,9 @@ public class GridManager : MonoBehaviour
     {
         if(cellSize > 0)
         {
-            for (int x = 0; x < width; x++)
+            for (int x = -60; x < width; x++)
             {
-                for (int y = 0; y < height; y++)
+                for (int y = -30; y < height; y++)
                 {
                     var spawnedTile = Instantiate(tilePrefab, new Vector3(x, y), Quaternion.identity);
                     spawnedTile.transform.SetParent(transform);
