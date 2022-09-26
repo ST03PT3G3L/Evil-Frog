@@ -30,6 +30,10 @@ public class DragDrop : MonoBehaviour
 
         if (isDragging)
         {
+            if ()
+            {
+
+            }
             isDragging = false;
             renderer.color = Color.green;
         }
