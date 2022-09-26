@@ -19,7 +19,7 @@ public class DragDrop : MonoBehaviour
 
     void Update()
     {
-        if (isDragging)
+        if (isDragging && hover.currentlyHovering != null)
         {
             origin.position = hover.currentlyHovering.position;
         }
@@ -27,34 +27,17 @@ public class DragDrop : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (isDragging)
+        if (isDragging && placeable)
         {
 
             isDragging = false;
-            renderer.color = Color.green;
+            renderer.color = Color.blue;
         }
-        else
+        else if(!isDragging)
         {
             isDragging = true;
-            renderer.color = Color.red;
+            renderer.color = Color.green;
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("col");
-        if (isDragging)
-        {
-            if (collision.gameObject.layer == 7)
-            {
-                placeable = false;
-            }
-            else
-            {
-                placeable = true;
-            }
-        }
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -65,12 +48,20 @@ public class DragDrop : MonoBehaviour
             if (collision.gameObject.layer == 7)
             {
                 placeable = false;
+                renderer.color = Color.red;
             }
             else
             {
                 placeable = true;
+                renderer.color = Color.green;
             }
         }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        placeable = true;
+        renderer.color = Color.green;
     }
 
 }
