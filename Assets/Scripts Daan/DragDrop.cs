@@ -7,6 +7,7 @@ public class DragDrop : MonoBehaviour
     [SerializeField] MouseHover hover;
     [SerializeField] Transform origin;
 
+    public bool placeable = true;
     public bool isDragging;
     private SpriteRenderer renderer;
 
@@ -26,14 +27,9 @@ public class DragDrop : MonoBehaviour
 
     private void OnMouseDown()
     {
-
-
         if (isDragging)
         {
-            if ()
-            {
 
-            }
             isDragging = false;
             renderer.color = Color.green;
         }
@@ -41,6 +37,39 @@ public class DragDrop : MonoBehaviour
         {
             isDragging = true;
             renderer.color = Color.red;
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("col");
+        if (isDragging)
+        {
+            if (collision.gameObject.layer == 7)
+            {
+                placeable = false;
+            }
+            else
+            {
+                placeable = true;
+            }
+        }
+
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log("trig");
+        if (isDragging)
+        {
+            if (collision.gameObject.layer == 7)
+            {
+                placeable = false;
+            }
+            else
+            {
+                placeable = true;
+            }
         }
     }
 
