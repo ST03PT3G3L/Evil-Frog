@@ -7,6 +7,7 @@ public class Bullet : MonoBehaviour
 
     Transform target;
     [SerializeField] float speed;
+    float damage;
 
     public void Seek(Transform _target)
     {
@@ -36,7 +37,11 @@ public class Bullet : MonoBehaviour
     void HitTarget()
     {
         Debug.Log("HIT ON ENEMY!");
-        //Destroy(target.gameObject);
+        target.GetComponent<EnemyHealth>().ReceiveDamage(damage);
         Destroy(gameObject);
+    }
+    public void SetDamage(float damage)
+    {
+        this.damage = damage;
     }
 }

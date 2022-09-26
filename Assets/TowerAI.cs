@@ -11,6 +11,7 @@ public class TowerAI : MonoBehaviour
     [SerializeField] float fireRate;
 
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] float damage;
 
     private void Start()
     {
@@ -40,6 +41,7 @@ public class TowerAI : MonoBehaviour
 
         if(bullet != null)
         {
+            bullet.SetDamage(damage);
             bullet.Seek(target);
         }
         Debug.Log("Shoot");
