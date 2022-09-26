@@ -26,13 +26,16 @@ public class DragDrop : MonoBehaviour
 
     private void OnMouseDown()
     {
-        isDragging = !isDragging;
+
+
         if (isDragging)
         {
+            isDragging = false;
             renderer.color = Color.green;
         }
         else
         {
+            isDragging = true;
             renderer.color = Color.red;
         }
     }
