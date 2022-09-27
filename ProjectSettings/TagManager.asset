@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - Tile
+  - Spawner
+  - Checker
+  - Lair
   layers:
   - Default
   - TransparentFX

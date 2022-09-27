@@ -10,5 +10,9 @@ public class CornerPathRight : MonoBehaviour
         {
             collision.GetComponent<Rigidbody2D>().velocity = new Vector2(5, 0);
         }
+        else if (collision.tag == "Checker")
+        {
+            collision.GetComponent<Rigidbody2D>().velocity = new Vector2(50, 0);
+        }
     }
 }

@@ -10,6 +10,10 @@ public class StraightPathUp : MonoBehaviour
         {
             collision.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 5);
         }
+       else if(collision.tag == "Checker")
+        {
+            collision.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 50);
+        }
     }
 
 }
