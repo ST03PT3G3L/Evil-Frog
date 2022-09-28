@@ -14,6 +14,10 @@ public class DragDrop : MonoBehaviour
     void Start()
     {
         renderer = GetComponent<SpriteRenderer>();
+        if(GameObject.Find("HoverCheck").GetComponent<MouseHover>() != null)
+        {
+            hover = GameObject.Find("HoverCheck").GetComponent<MouseHover>();
+        }
     }
 
 
@@ -60,8 +64,11 @@ public class DragDrop : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        placeable = true;
-        renderer.color = Color.green;
+        if (isDragging)
+        {
+            placeable = true;
+            renderer.color = Color.green;
+        }
     }
 
 }
