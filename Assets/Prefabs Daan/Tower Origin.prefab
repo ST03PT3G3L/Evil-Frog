@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7389025242766558621}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -6.76, y: -3.38, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -103,6 +103,7 @@ MonoBehaviour:
   range: 5.87
   fireRate: 5
   bulletPrefab: {fileID: 9138025207320898521, guid: e86e0628936f78b49b8f1530c5617941, type: 3}
+  damage: 0
 --- !u!61 &7389025242766558612
 BoxCollider2D:
   m_ObjectHideFlags: 0

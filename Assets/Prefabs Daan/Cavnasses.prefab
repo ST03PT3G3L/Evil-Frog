@@ -2079,7 +2079,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3895003272604468821}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2848044299540775050}
+        m_TargetAssemblyTypeName: Merchant, Assembly-CSharp
+        m_MethodName: BuyTower
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 5
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6993746289013482524
 GameObject:
   m_ObjectHideFlags: 0
@@ -2115,8 +2127,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.0497, y: -52.3829}
-  m_SizeDelta: {x: 1075.3243, y: 783.3241}
+  m_AnchoredPosition: {x: 73.756, y: 50.14}
+  m_SizeDelta: {x: 931.91, y: 578.28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4859318974565266089
 CanvasRenderer:

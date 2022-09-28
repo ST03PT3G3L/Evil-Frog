@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5740056238015358892}
   - component: {fileID: 5740056238015358893}
   - component: {fileID: 5740056238015358894}
+  - component: {fileID: 2019043940}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -116,3 +117,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &2019043940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5740056238015358890}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: abb73b56b92a89d4b84f418ded821a6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 10
+  fireRate: 4
+  bulletPrefab: {fileID: 9138025207320898521, guid: e86e0628936f78b49b8f1530c5617941, type: 3}
+  damage: 0
