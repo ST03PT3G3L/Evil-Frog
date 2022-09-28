@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class WaveManager : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI waveCountText;
     public GameObject player;
     public GameObject[] enemySpawners;
 
     public int roundNumber = 0;
     public int space = 1;
+    private int totalWaves;
 
     [System.Serializable]
     public class Round
@@ -18,6 +21,12 @@ public class WaveManager : MonoBehaviour
     }
 
     public List<Round> rounds = new List<Round>();
+
+    private void Start()
+    {
+        totalWaves = rounds.Count;
+        waveCountText.text = "Wave: " + roundNumber + "/" + totalWaves;
+    }
 
     void Update()
     {
@@ -30,6 +39,13 @@ public class WaveManager : MonoBehaviour
     private void GetSpawners()
     {
         enemySpawners = GameObject.FindGameObjectsWithTag("Spawner");
+    }
+
+    public void StartRound()
+    {
+        int wave = roundNumber + 1;
+        waveCountText.text = "Wave: " + wave + "/" + totalWaves;
+        StartCoroutine(InitiateNextRound());
     }
 
     IEnumerator InitiateNextRound()

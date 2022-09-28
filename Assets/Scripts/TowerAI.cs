@@ -9,9 +9,19 @@ public class TowerAI : MonoBehaviour
 
     private float fireCountdown;
     [SerializeField] float fireRate;
+    public float FireRate
+    {
+        get { return fireRate; }
+        set { fireRate = value; }
+    }
 
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] float damage;
+    public float Damage
+    {
+        get { return damage; }
+        set { damage = value; }
+    }
 
     private void Start()
     {

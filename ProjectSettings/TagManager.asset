@@ -9,6 +9,7 @@ TagManager:
   - Spawner
   - Checker
   - Lair
+  - CurrencyHandler
   layers:
   - Default
   - TransparentFX
