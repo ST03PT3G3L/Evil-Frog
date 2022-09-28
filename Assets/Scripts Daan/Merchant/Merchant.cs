@@ -10,9 +10,9 @@ public class Merchant : MonoBehaviour
     [SerializeField] Transform pos;
     public void BuyTower(int price)
     {
-        if(curreny.money >= price)
+        if(curreny.souls >= price)
         {
-            curreny.loseMoney(price);
+            curreny.loseSouls(price);
             InstantiateTower();
         }
     }
@@ -20,5 +20,19 @@ public class Merchant : MonoBehaviour
     private void InstantiateTower()
     {
         GameObject newTower = Instantiate(tower, pos.position, Quaternion.identity);
+    }
+
+    public void BuyItem(int price)
+    {
+        if (curreny.money >= price)
+        {
+            curreny.loseMoney(price);
+            givePlayerAttackSpeed();
+        }
+    }
+
+    private void givePlayerAttackSpeed()
+    {
+        pos.GetComponent<TowerAI>().fireRate++;
     }
 }

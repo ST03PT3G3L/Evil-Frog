@@ -8,7 +8,7 @@ public class TowerAI : MonoBehaviour
     private Transform target;
 
     private float fireCountdown;
-    [SerializeField] float fireRate;
+    [SerializeField] public float fireRate;
     public float FireRate
     {
         get { return fireRate; }

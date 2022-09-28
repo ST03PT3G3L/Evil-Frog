@@ -6,19 +6,19 @@ public class OpenMerchantUI : MonoBehaviour
 {
     [SerializeField] private Canvas merchantUI;
     [SerializeField] private Canvas mainUI;
-
-    private bool merchantUIIsActve = false;
+    [SerializeField] private Canvas soulsForgeUI;
 
     private void Start()
     {
-        merchantUI.enabled = merchantUIIsActve;
+        ActivateUI(mainUI);
     }
 
-    public void ActivateMerchantUI()
+    public void ActivateUI(Canvas ui)
     {
-        merchantUIIsActve = !merchantUIIsActve;
+        merchantUI.enabled = false;
+        mainUI.enabled = false;
+        soulsForgeUI.enabled = false;
 
-        merchantUI.enabled = merchantUIIsActve;
-        mainUI.enabled = !merchantUIIsActve;
+        ui.enabled = true;
     }
 }

@@ -33,12 +33,13 @@ public class DragDrop : MonoBehaviour
     {
         if (isDragging && placeable)
         {
-
             isDragging = false;
+            hover.isDraggingSomething = false;
             renderer.color = Color.blue;
         }
-        else if(!isDragging)
+        else if(!isDragging && !hover.isDraggingSomething)
         {
+            hover.isDraggingSomething = true;
             isDragging = true;
             renderer.color = Color.green;
         }
@@ -46,7 +47,6 @@ public class DragDrop : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("trig");
         if (isDragging)
         {
             if (collision.gameObject.layer == 7)

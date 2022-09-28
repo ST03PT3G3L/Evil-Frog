@@ -5,6 +5,7 @@ using UnityEngine;
 public class MouseHover : MonoBehaviour
 {
     public Transform currentlyHovering;
+    public bool isDraggingSomething;
 
     private void Update()
     {
