@@ -33,6 +33,6 @@ public class Merchant : MonoBehaviour
 
     private void givePlayerAttackSpeed()
     {
-        pos.GetComponent<TowerAI>().fireRate++;
+        pos.GetComponent<TowerStats>().FireRate += 1;
     }
 }

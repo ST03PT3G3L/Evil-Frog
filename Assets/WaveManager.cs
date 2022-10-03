@@ -61,7 +61,7 @@ public class WaveManager : MonoBehaviour
         foreach (GameObject enemy in round.enemies)
         {
             StartCoroutine(SpawnEnemy(i));
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(round.spawnDelay);
 
             if(i < spawnersAmount - 1)
             {

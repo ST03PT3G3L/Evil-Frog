@@ -4,27 +4,17 @@ using UnityEngine;
 
 public class TowerAI : MonoBehaviour
 {
-    [SerializeField] float range;
-    private Transform target;
+    [SerializeField] private TowerStats stats;
 
+    private Transform target;
     private float fireCountdown;
-    [SerializeField] public float fireRate;
-    public float FireRate
-    {
-        get { return fireRate; }
-        set { fireRate = value; }
-    }
 
     [SerializeField] GameObject bulletPrefab;
-    [SerializeField] float damage;
-    public float Damage
-    {
-        get { return damage; }
-        set { damage = value; }
-    }
+
 
     private void Start()
     {
+        //stats = GetComponent<TowerStats>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
@@ -37,7 +27,7 @@ public class TowerAI : MonoBehaviour
         if (fireCountdown <= 0)
         {
             Shoot();
-            fireCountdown = 1f / fireRate;
+            fireCountdown = 1f / stats.FireRate;
         }
 
         fireCountdown -= Time.deltaTime;
@@ -51,7 +41,7 @@ public class TowerAI : MonoBehaviour
 
         if(bullet != null)
         {
-            bullet.SetDamage(damage);
+            bullet.SetDamage(stats.Damage);
             bullet.Seek(target);
         }
         Debug.Log("Shoot");
@@ -73,7 +63,7 @@ public class TowerAI : MonoBehaviour
             }
         }
 
-        if(nearestEnemy != null && shortestDistance <= range)
+        if(nearestEnemy != null && shortestDistance <= stats.Range)
         {
             target = nearestEnemy.transform;
         }
@@ -86,6 +76,6 @@ public class TowerAI : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
+        Gizmos.DrawWireSphere(transform.position, stats.Range);
     }
 }
