@@ -8,16 +8,18 @@ public class Merchant : MonoBehaviour
 
     [SerializeField] GameObject tower;
     [SerializeField] Transform pos;
-    public void BuyTower(int price)
+    public void BuyTower()
     {
+        float price = tower.gameObject.GetComponentInChildren<TowerStats>().Price;
+
         if(curreny.souls >= price)
         {
-            curreny.loseSouls(price);
-            InstantiateTower();
+            curreny.loseSouls((int)price);
+            InstantiateTower((int)price);
         }
     }
 
-    private void InstantiateTower()
+    private void InstantiateTower(int price)
     {
         GameObject newTower = Instantiate(tower, pos.position, Quaternion.identity);
     }

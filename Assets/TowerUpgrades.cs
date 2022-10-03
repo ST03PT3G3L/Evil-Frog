@@ -57,6 +57,8 @@ public class TowerUpgrades : MonoBehaviour
             case "Damage":
                 if (currencyHandler.GetComponent<Currency>().souls >= upgrade1Cost)
                 {
+
+                    stats.moneySpent += upgrade1Cost;
                     Debug.Log("Succes");
                     currencyHandler.GetComponent<Currency>().loseSouls(upgrade1Cost);
                     stats.Damage += 0.5f;
@@ -80,6 +82,8 @@ public class TowerUpgrades : MonoBehaviour
             case "FireRate":
                 if (currencyHandler.GetComponent<Currency>().souls >= upgrade2Cost)
                 {
+
+                    stats.moneySpent += upgrade1Cost;
                     currencyHandler.GetComponent<Currency>().loseSouls(upgrade2Cost);
                     stats.FireRate += 1;
                 }
@@ -90,6 +94,14 @@ public class TowerUpgrades : MonoBehaviour
                 break;
         }
         RandomizeUpgrade();
+    }
+
+    public void SellTower()
+    {
+        float moneyBack = (stats.moneySpent + stats.Price) * .75f;
+        int money = (int)moneyBack;
+        currencyHandler.GetComponent<Currency>().EarnSouls(money);
+        Destroy(transform.parent.gameObject);
     }
 
     private void RandomizeUpgrade()

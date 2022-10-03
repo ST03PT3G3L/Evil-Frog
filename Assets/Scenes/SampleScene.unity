@@ -1649,7 +1649,7 @@ MonoBehaviour:
       - m_Target: {fileID: 257942067}
         m_TargetAssemblyTypeName: Merchant, Assembly-CSharp
         m_MethodName: BuyTower
-        m_Mode: 3
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3911,6 +3911,8 @@ MonoBehaviour:
   fireRate: 1
   range: 5
   damage: 1
+  price: 0
+  moneySpent: 0
 --- !u!1 &2079896512
 GameObject:
   m_ObjectHideFlags: 0

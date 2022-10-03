@@ -4,9 +4,17 @@ using UnityEngine;
 
 public class TowerStats : MonoBehaviour
 {
-    [SerializeField] public float fireRate;
+    [SerializeField] float fireRate;
     [SerializeField] float range;
     [SerializeField] float damage;
+    [SerializeField] float price;
+    public float moneySpent;
+
+    public float Price
+    {
+        get { return price; }
+        set { price = value; }
+    }
 
     public float FireRate
     {
