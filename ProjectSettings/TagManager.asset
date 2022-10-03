@@ -10,11 +10,12 @@ TagManager:
   - Checker
   - Lair
   - CurrencyHandler
+  - Path
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Checker
   - Water
   - UI
   - Background

@@ -18,6 +18,7 @@ public class PathChecker : MonoBehaviour
 
     private void Start()
     {
+        Physics.IgnoreLayerCollision(3, 7);
         timer = 1;
         StartCoroutine(TimerDown());
     }

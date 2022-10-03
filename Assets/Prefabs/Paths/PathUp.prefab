@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5832408928754969596}
   - component: {fileID: 5832408928754969599}
   - component: {fileID: 5832408928754969597}
-  - component: {fileID: 5832408928754969586}
+  - component: {fileID: 8280489983101316858}
   m_Layer: 0
   m_Name: PathUp
-  m_TagString: Untagged
+  m_TagString: Path
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 5832408928754969598}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -5.146714, y: 0.23669995, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.6483, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,7 +102,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
---- !u!114 &5832408928754969586
+--- !u!114 &8280489983101316858
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -111,6 +111,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5832408928754969598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73cb2eb57b96a1443ac92b239c136534, type: 3}
+  m_Script: {fileID: 11500000, guid: cd4196c353272cc4fbd244496460089f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: 0

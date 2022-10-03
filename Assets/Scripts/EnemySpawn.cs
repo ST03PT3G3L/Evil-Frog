@@ -47,38 +47,11 @@ public class EnemySpawn : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        GetDirection();
-        if (collision.tag == "Enemy")
-        {
-            collision.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX, moveY);
-        }
-        else if(collision.tag == "Checker")
-        {
-            collision.GetComponent<Rigidbody2D>().velocity = new Vector2(moveX*10, moveY*10);
-        }
+        collision.GetComponent<EnemyMovement>().Movement(directions);
     }
 
     public void StartWave()
     {
         waveOngoing = true;
-    }
-
-    private void GetDirection()
-    {
-        switch (directions)
-        {
-            case Directions.Up:
-                moveY = 5;
-                moveX = 0;
-                break;
-            case Directions.Left:
-                moveY = 0;
-                moveX = -5;
-                break;
-            case Directions.Right:
-                moveY = 0;
-                moveX = 5;
-                break;
-        }
     }
 }

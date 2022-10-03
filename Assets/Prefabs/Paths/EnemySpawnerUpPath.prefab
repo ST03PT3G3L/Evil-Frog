@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 231579640001007320}
   - component: {fileID: 4196541906054623913}
   - component: {fileID: 1296750661228953025}
+  - component: {fileID: 534097707068160970}
   m_Layer: 0
   m_Name: EnemySpawenerUp
-  m_TagString: Untagged
+  m_TagString: Path
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,6 +49,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 6902446428126218821, guid: 3bd0e87abb238e94aa1c3686f3ea9c26, type: 3}
   directions: 0
   checkerPrefab: {fileID: 3662401251363429855, guid: 0df6dde343927f64fb6110469eea4712, type: 3}
+  waveOngoing: 0
 --- !u!58 &1296750661228953025
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -64,6 +66,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.1
+--- !u!114 &534097707068160970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307286895567691799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd4196c353272cc4fbd244496460089f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 0
 --- !u!1 &7660474895722058699
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +93,7 @@ GameObject:
   - component: {fileID: 7660474895722058695}
   m_Layer: 0
   m_Name: EnemySpawnerUpPath
-  m_TagString: Untagged
+  m_TagString: Path
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,3 +194,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73cb2eb57b96a1443ac92b239c136534, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0
