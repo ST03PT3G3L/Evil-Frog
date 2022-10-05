@@ -4,23 +4,40 @@ using UnityEngine;
 
 public class GoToMouse : MonoBehaviour
 {
-    public float speed = 1.5f;
     public KeyCode moveButton = KeyCode.Mouse1;
-
     private Vector3 target;
+    private PlayerAI player;
 
     void Start()
     {
+        player = GetComponent<PlayerAI>();
         target = transform.position;
     }
 
     void Update()
     {
+        //Check for input
         if (Input.GetKeyDown(moveButton))
         {
+            //Set the move target
             target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             target.z = transform.position.z;
+            player.state = PlayerAI.State.Walking;
+            player.originPos = target;
         }
-        transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
+
+        //Only walk to destination when commanded to
+        if (player.state == PlayerAI.State.Walking)
+        {
+            //Move to target
+            player.MoveTo(target);
+
+            //If the player reached the destination its state should not be "Walking"
+            if(transform.position == target)
+            {
+                player.state = PlayerAI.State.Idle;
+            }
+        }
+
     }
 }

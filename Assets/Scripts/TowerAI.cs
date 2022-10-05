@@ -14,7 +14,6 @@ public class TowerAI : MonoBehaviour
 
     private void Start()
     {
-        //stats = GetComponent<TowerStats>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
