@@ -8,6 +8,7 @@ public class PathScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.tag == "Enemy" || collision.tag == "Checker")
         collision.GetComponent<EnemyMovement>().Movement(direction);
     }
 }
