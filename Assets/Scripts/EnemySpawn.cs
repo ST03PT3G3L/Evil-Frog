@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
-    [SerializeField] GameObject enemyPrefab;
+    //[SerializeField] GameObject enemyPrefab;
     [SerializeField] Directions directions;
     [SerializeField] GameObject checkerPrefab;
 
@@ -34,9 +34,9 @@ public class EnemySpawn : MonoBehaviour
         }
     }
 
-    public void SpawnEnemy()
+    public void SpawnEnemy(GameObject preFab)
     {
-        Instantiate(enemyPrefab, transform.position, transform.rotation);
+        Instantiate(preFab, transform.position, transform.rotation);
     }
 
     public void EndWave()

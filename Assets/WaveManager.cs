@@ -60,7 +60,7 @@ public class WaveManager : MonoBehaviour
 
         foreach (GameObject enemy in round.enemies)
         {
-            StartCoroutine(SpawnEnemy(i));
+            StartCoroutine(SpawnEnemy(i, enemy));
             yield return new WaitForSeconds(round.spawnDelay);
 
             if(i < spawnersAmount - 1)
@@ -77,9 +77,9 @@ public class WaveManager : MonoBehaviour
         roundNumber++;
     }
 
-    IEnumerator SpawnEnemy(int spawnerNumber)
+    IEnumerator SpawnEnemy(int spawnerNumber, GameObject enemy)
     {
-        enemySpawners[spawnerNumber].GetComponent<EnemySpawn>().SpawnEnemy();
+        enemySpawners[spawnerNumber].GetComponent<EnemySpawn>().SpawnEnemy(enemy);
         yield return new WaitForSeconds(0);
     }
 }

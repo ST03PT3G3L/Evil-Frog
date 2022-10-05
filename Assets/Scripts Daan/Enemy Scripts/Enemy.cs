@@ -1,19 +1,27 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 
-[CreateAssetMenu(fileName = "New Enemy", menuName ="Enemy")]
-public class Enemy : ScriptableObject
+public class Enemy : MonoBehaviour
 {
-    public string name;
-    
-   /* public enum Abilities
+    [SerializeField] public EnemyData data;
+
+    public string enemyName;
+    public float HP;
+    public float speed;
+    public float worth;
+    private void Start()
     {
-        ChangeColor,
-        GainHP
+        updateData();
     }
-    [SerializeField] public List<Abilities> usingAbilities = new List<Abilities>(); */
-
-
+    private void updateData()
+    {
+        enemyName = data.name_;
+        HP = data.maxHP_;
+        speed = data.speed_;
+        worth = data.worth_;
+    }
 }
+
+
+
