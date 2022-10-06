@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour
     Transform target;
     [SerializeField] float speed;
     float damage;
+    [SerializeField] GameObject explosionEffect;
+    [SerializeField] BulletType type;
 
     public void Seek(Transform _target)
     {
@@ -37,8 +39,20 @@ public class Bullet : MonoBehaviour
     void HitTarget()
     {
         Debug.Log("HIT ON ENEMY!");
-        target.GetComponent<EnemyHealth>().ReceiveDamage(damage);
-        Destroy(gameObject);
+        switch(type)
+        {
+            case BulletType.NormalBullet:
+                target.GetComponent<EnemyHealth>().ReceiveDamage(damage);
+                Destroy(gameObject);
+                break;
+            case BulletType.ExplosiveBullet:
+                GameObject explosion = (GameObject)Instantiate(explosionEffect, transform.position, transform.rotation);
+                explosion.GetComponent<ExplosionEffect>().SetDamage(damage);
+                Destroy(gameObject);
+                Destroy(explosion, 5f);
+                break;
+        }
+        
     }
     public void SetDamage(float damage)
     {

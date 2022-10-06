@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8604910320051507195}
   - component: {fileID: 2172712461105436102}
-  - component: {fileID: -3494567588957879594}
+  - component: {fileID: -51309728469276818}
+  - component: {fileID: 7018632780986242368}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Explosive Bullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +86,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-3494567588957879594
+--- !u!114 &-51309728469276818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9138025207320898521}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ab8993698b8f394380be96b9060a531, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 50
+  explosionEffect: {fileID: 57144948416631123, guid: acea7c1e4ca31994484ebad8b9e34c22, type: 3}
+--- !u!114 &7018632780986242368
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -98,4 +113,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
-  explosionEffect: {fileID: 0}
+  explosionEffect: {fileID: 57144948416631123, guid: acea7c1e4ca31994484ebad8b9e34c22, type: 3}
+  type: 1
