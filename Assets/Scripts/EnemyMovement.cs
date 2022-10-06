@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     private Enemy enemy;
+    private float speed;
     private void Start()
     {
         enemy = GetComponent<Enemy>();

@@ -5,6 +5,7 @@ using UnityEngine;
 public class GoToMouse : MonoBehaviour
 {
     public KeyCode moveButton = KeyCode.Mouse1;
+    public Camera cam;
     private Vector3 target;
     private PlayerAI player;
 
@@ -20,7 +21,7 @@ public class GoToMouse : MonoBehaviour
         if (Input.GetKeyDown(moveButton))
         {
             //Set the move target
-            target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            target = cam.ScreenToWorldPoint(Input.mousePosition);
             target.z = transform.position.z;
             player.state = PlayerAI.State.Walking;
             player.originPos = target;

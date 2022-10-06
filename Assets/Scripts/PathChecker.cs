@@ -25,11 +25,6 @@ public class PathChecker : MonoBehaviour
 
     private void Update()
     {
-        if(timer == 0)
-        {
-            Debug.Log("Can't reach lair!");
-            Destroy(gameObject);
-        }
     }
 
     IEnumerator TimerDown()
@@ -39,5 +34,7 @@ public class PathChecker : MonoBehaviour
             yield return new WaitForSeconds(1f);
             timer -= 1;
         }
+        Debug.Log("Can't reach lair!");
+        Destroy(gameObject);
     }
 }

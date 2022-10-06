@@ -46,7 +46,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f3a29604e51c44182c7c175f4ed6ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 6902446428126218821, guid: 3bd0e87abb238e94aa1c3686f3ea9c26, type: 3}
   directions: 0
   checkerPrefab: {fileID: 3662401251363429855, guid: 0df6dde343927f64fb6110469eea4712, type: 3}
   waveOngoing: 0
@@ -90,7 +89,7 @@ GameObject:
   - component: {fileID: 7660474895722058697}
   - component: {fileID: 7660474895722058698}
   - component: {fileID: 7660474895722058696}
-  - component: {fileID: 7660474895722058695}
+  - component: {fileID: 1092981822}
   m_Layer: 7
   m_Name: EnemySpawnerUpPath
   m_TagString: Path
@@ -182,7 +181,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0.146734}
   serializedVersion: 2
   m_Radius: 0.20548034
---- !u!114 &7660474895722058695
+--- !u!114 &1092981822
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -191,7 +190,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7660474895722058699}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73cb2eb57b96a1443ac92b239c136534, type: 3}
+  m_Script: {fileID: 11500000, guid: cd4196c353272cc4fbd244496460089f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
+  direction: 0

@@ -29,8 +29,8 @@ public class EnemySpawn : MonoBehaviour
     {
         while (!waveOngoing)
         {
-            Instantiate(checkerPrefab, transform.position, transform.rotation);
             yield return new WaitForSeconds(1f);
+            Instantiate(checkerPrefab, transform.position, transform.rotation);
         }
     }
 
