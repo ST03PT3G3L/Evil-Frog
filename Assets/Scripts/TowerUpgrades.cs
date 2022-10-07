@@ -10,7 +10,7 @@ public class TowerUpgrades : MonoBehaviour
     [SerializeField] TextMeshProUGUI upgrade1Text;
     [SerializeField] TextMeshProUGUI upgrade2Text;
 
-    private TowerStats stats;
+    private Tower stats;
 
     [System.Serializable]
     public class Upgrade
@@ -31,7 +31,7 @@ public class TowerUpgrades : MonoBehaviour
 
     private void Start()
     {
-        stats = GetComponent<TowerStats>();
+        stats = GetComponentInParent<Tower>();
         currencyHandler = GameObject.FindGameObjectWithTag("CurrencyHandler");
         RandomizeUpgrade();
     }
@@ -61,7 +61,7 @@ public class TowerUpgrades : MonoBehaviour
                     stats.moneySpent += upgrade1Cost;
                     Debug.Log("Succes");
                     currencyHandler.GetComponent<Currency>().loseSouls(upgrade1Cost);
-                    stats.Damage += 0.5f;
+                    stats.damage += 0.5f;
                 }
                 else
                 {
@@ -85,7 +85,7 @@ public class TowerUpgrades : MonoBehaviour
 
                     stats.moneySpent += upgrade1Cost;
                     currencyHandler.GetComponent<Currency>().loseSouls(upgrade2Cost);
-                    stats.FireRate += 1;
+                    stats.fireRate += 1;
                 }
                 else
                 {
@@ -98,7 +98,8 @@ public class TowerUpgrades : MonoBehaviour
 
     public void SellTower()
     {
-        float moneyBack = (stats.moneySpent + stats.Price) * .75f;
+        Debug.Log("a");
+        float moneyBack = (stats.moneySpent + stats.price) * .75f;
         int money = (int)moneyBack;
         currencyHandler.GetComponent<Currency>().EarnSouls(money);
         Destroy(transform.parent.gameObject);

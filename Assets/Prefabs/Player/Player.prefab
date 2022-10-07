@@ -101,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveButton: 324
+  cam: {fileID: 0}
 --- !u!58 &5740056238015358894
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -146,7 +147,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 1
-  range: 5
-  walkRange: 10
+  range: 10
+  walkRange: 2
   damage: 1
   speed: 6

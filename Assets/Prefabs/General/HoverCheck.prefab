@@ -46,6 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentlyHovering: {fileID: 0}
+  isDraggingSomething: 0
+  cam: {fileID: 0}
 --- !u!61 &9060397651185584247
 BoxCollider2D:
   m_ObjectHideFlags: 0

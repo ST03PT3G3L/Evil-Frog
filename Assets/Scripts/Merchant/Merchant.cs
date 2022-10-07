@@ -5,12 +5,11 @@ using UnityEngine;
 public class Merchant : MonoBehaviour
 {
     [SerializeField] Currency curreny;
-
     [SerializeField] GameObject tower;
     [SerializeField] Transform pos;
     public void BuyTower()
     {
-        float price = tower.gameObject.GetComponentInChildren<TowerStats>().Price;
+        float price = tower.gameObject.GetComponentInChildren<Tower>().price;
 
         if(curreny.souls >= price)
         {
@@ -22,19 +21,5 @@ public class Merchant : MonoBehaviour
     private void InstantiateTower(int price)
     {
         GameObject newTower = Instantiate(tower, pos.position, Quaternion.identity);
-    }
-
-    public void BuyItem(int price)
-    {
-        if (curreny.money >= price)
-        {
-            curreny.loseMoney(price);
-            givePlayerAttackSpeed();
-        }
-    }
-
-    private void givePlayerAttackSpeed()
-    {
-        pos.GetComponent<TowerStats>().FireRate += 1;
     }
 }

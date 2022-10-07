@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 330205533668595857}
   m_Layer: 0
   m_Name: CurrencyHandler
-  m_TagString: Untagged
+  m_TagString: CurrencyHandler
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,4 +47,4 @@ MonoBehaviour:
   moneyText: {fileID: 0}
   money: 0
   soulsText: {fileID: 0}
-  souls: 0
+  souls: 10

@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class TowerAI : MonoBehaviour
 {
-    [SerializeField] private TowerStats stats;
-
+    private Tower tower;
     private Transform target;
     private float fireCountdown;
-
-    [SerializeField] GameObject bulletPrefab;
-
-
     private void Start()
     {
+        tower = GetComponentInParent<Tower>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
@@ -26,7 +22,7 @@ public class TowerAI : MonoBehaviour
         if (fireCountdown <= 0)
         {
             Shoot();
-            fireCountdown = 1f / stats.FireRate;
+            fireCountdown = 1f / tower.fireRate;
         }
 
         fireCountdown -= Time.deltaTime;
@@ -35,12 +31,12 @@ public class TowerAI : MonoBehaviour
 
     void Shoot()
     {
-        GameObject BulletGO = (GameObject)Instantiate(bulletPrefab, transform.position, transform.rotation);
+        GameObject BulletGO = (GameObject)Instantiate(tower.bulletPrefab, transform.position, transform.rotation);
         Bullet bullet = BulletGO.GetComponent<Bullet>();
 
         if(bullet != null)
         {
-            bullet.SetDamage(stats.Damage);
+            bullet.SetDamage(tower.damage);
             bullet.Seek(target);
         }
         Debug.Log("Shoot");
@@ -62,7 +58,7 @@ public class TowerAI : MonoBehaviour
             }
         }
 
-        if(nearestEnemy != null && shortestDistance <= stats.Range)
+        if(nearestEnemy != null && shortestDistance <= tower.range)
         {
             target = nearestEnemy.transform;
         }
@@ -72,9 +68,5 @@ public class TowerAI : MonoBehaviour
         }
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, stats.Range);
-    }
+
 }
