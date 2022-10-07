@@ -9,11 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6ab61a6cd39be542b7770b799860f0c, type: 3}
-  m_Name: Normal Tower
+  m_Script: {fileID: 11500000, guid: b17943b4a8eb44e479e7f741c8dc48d7, type: 3}
+  m_Name: Player Damage Boost
   m_EditorClassIdentifier: 
-  fireRate_: 1.5
-  range_: 6
-  damage_: 1
-  price_: 10
-  bulletPrefab_: {fileID: 9138025207320898521, guid: e86e0628936f78b49b8f1530c5617941, type: 3}
+  name_: Player Damage Boost
+  price_: 5
+  description_: Boosts the player damage!

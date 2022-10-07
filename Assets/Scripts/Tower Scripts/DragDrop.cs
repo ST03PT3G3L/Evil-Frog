@@ -45,6 +45,15 @@ public class DragDrop : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (isDragging)
+        {
+            placeable = true;
+            renderer.color = Color.green;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (isDragging)
@@ -62,13 +71,6 @@ public class DragDrop : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (isDragging)
-        {
-            placeable = true;
-            renderer.color = Color.green;
-        }
-    }
+
 
 }

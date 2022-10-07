@@ -1189,6 +1189,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7511676889467314233}
+  - component: {fileID: 7075766686759960966}
   m_Layer: 7
   m_Name: Normal Tower 1
   m_TagString: Untagged
@@ -1213,6 +1214,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7075766686759960966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7511676889467314232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 188483c948940fb4a80f5918bdeb99c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: 19b00076fa88a0e459c66129ac5d0686, type: 2}
+  fireRate: 0
+  range: 0
+  damage: 0
+  price: 0
+  bulletPrefab: {fileID: 0}
+  moneySpent: 0
 --- !u!1 &7511676890257045719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1228,7 +1248,6 @@ GameObject:
   - component: {fileID: 7511676890257045721}
   - component: {fileID: 7511676890257045720}
   - component: {fileID: 558197917819565815}
-  - component: {fileID: 1059965606745800008}
   m_Layer: 7
   m_Name: Tower
   m_TagString: Untagged
@@ -1398,22 +1417,3 @@ MonoBehaviour:
     cost: 5
   - name: FireRate
     cost: 5
---- !u!114 &1059965606745800008
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7511676890257045719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 188483c948940fb4a80f5918bdeb99c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 19b00076fa88a0e459c66129ac5d0686, type: 2}
-  fireRate: 0
-  range: 0
-  damage: 0
-  price: 0
-  bulletPrefab: {fileID: 0}
-  moneySpent: 0

@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] ItemData data;
+
+    public string itemName;
+    public float price;
+    public string description;
+
+    private void Start()
     {
-        
+        UpdateData();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void UpdateData()
     {
-        
+        itemName = data.name_;
+        price = data.price_;
+        description = data.description_;
     }
 }

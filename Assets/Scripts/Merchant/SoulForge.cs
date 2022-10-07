@@ -10,7 +10,7 @@ public class SoulForge : MonoBehaviour
     {
         Tower tower = preFab.GetComponent<Tower>();
         tower.UpdateData();
-        Debug.Log(tower.price);
+
         if (curreny.souls >= tower.price)
         {
             curreny.loseSouls((int)tower.price);
