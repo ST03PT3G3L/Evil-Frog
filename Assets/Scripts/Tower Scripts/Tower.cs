@@ -31,6 +31,6 @@ public class Tower : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, data.range_);
+        Gizmos.DrawWireSphere(transform.position, range);
     }
 }

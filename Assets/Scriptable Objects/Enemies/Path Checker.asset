@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name_: Checker
   maxHP_: 1
-  speed_: 50
+  speed_: 25
   worth_: 1
