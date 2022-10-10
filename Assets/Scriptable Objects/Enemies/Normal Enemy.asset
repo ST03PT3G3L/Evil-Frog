@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Normal Enemy
   m_EditorClassIdentifier: 
   name_: Normal
-  maxHP_: 99
+  maxHP_: 5
   speed_: 2
   worth_: 10
