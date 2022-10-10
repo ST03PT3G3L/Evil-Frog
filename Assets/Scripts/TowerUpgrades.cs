@@ -41,8 +41,16 @@ public class TowerUpgrades : MonoBehaviour
         if(Input.GetMouseButtonDown(1))
         {
             upgradeCanvas.GetComponent<Canvas>().enabled = true;
+            GetComponentInParent<Range>().enabled = true;
+            GetComponentInParent<LineRenderer>().enabled = true;
             //Debug.Log("Right Clicked on Tower");
         }
+    }
+
+    public void DisableRange()
+    {
+        GetComponentInParent<Range>().enabled = false;
+        GetComponentInParent<LineRenderer>().enabled = false;
     }
 
     public void CloseCanvas()
