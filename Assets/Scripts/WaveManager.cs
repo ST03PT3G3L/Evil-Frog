@@ -13,6 +13,8 @@ public class WaveManager : MonoBehaviour
     public int space = 1;
     private int totalWaves;
 
+    private bool waveStarted = false;
+
     [System.Serializable]
     public class Round
     {
@@ -34,6 +36,17 @@ public class WaveManager : MonoBehaviour
         {
             StartCoroutine(InitiateNextRound());
         }
+
+        if (waveStarted)
+        {
+            ModeManager.editMode = false;
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            Debug.Log(enemies.Length);
+            if (enemies.Length == 0)
+            {
+                WaveEnd();
+            }
+        }
     }
 
     private void GetSpawners()
@@ -43,6 +56,7 @@ public class WaveManager : MonoBehaviour
 
     public void StartRound()
     {
+        waveStarted = true;
         int wave = roundNumber + 1;
         waveCountText.text = "Wave: " + wave + "/" + totalWaves;
         StartCoroutine(InitiateNextRound());
@@ -72,14 +86,19 @@ public class WaveManager : MonoBehaviour
                 i = 0;
             }
         }
-
-        BroadcastMessage("EndWave");
-        roundNumber++;
     }
 
     IEnumerator SpawnEnemy(int spawnerNumber, GameObject enemy)
     {
         enemySpawners[spawnerNumber].GetComponent<EnemySpawn>().SpawnEnemy(enemy);
         yield return new WaitForSeconds(0);
+    }
+
+    private void WaveEnd()
+    {
+        ModeManager.editMode = true;
+        waveStarted = false;
+        BroadcastMessage("EndWave");
+        roundNumber++;
     }
 }

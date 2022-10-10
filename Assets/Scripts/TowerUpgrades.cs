@@ -12,6 +12,8 @@ public class TowerUpgrades : MonoBehaviour
 
     private Tower stats;
 
+    public bool selected = false;
+
     [System.Serializable]
     public class Upgrade
     {
@@ -38,13 +40,34 @@ public class TowerUpgrades : MonoBehaviour
 
     private void OnMouseOver()
     {
+        if(ModeManager.editMode)
         if(Input.GetMouseButtonDown(1))
         {
-            upgradeCanvas.GetComponent<Canvas>().enabled = true;
-            GetComponentInParent<Range>().enabled = true;
-            GetComponentInParent<LineRenderer>().enabled = true;
-            //Debug.Log("Right Clicked on Tower");
+            GameObject[] Towers = GameObject.FindGameObjectsWithTag("Turret");
+            Debug.Log(Towers.Length);
+            foreach(GameObject tower in Towers)
+            {
+                TowerUpgrades towerup = tower.gameObject.GetComponent<TowerUpgrades>();
+                if(towerup != null)
+                {
+                   if(towerup.selected)
+                    {
+                        towerup.CloseCanvas();
+                    }
+                }
+
+            }
+            OpenCanvas();
         }
+    }
+
+    private void OpenCanvas()
+    {
+        selected = true;
+        upgradeCanvas.GetComponent<Canvas>().enabled = true;
+        GetComponentInParent<Range>().enabled = true;
+        GetComponentInParent<LineRenderer>().enabled = true;
+        //Debug.Log("Right Clicked on Tower");
     }
 
     public void DisableRange()
@@ -55,7 +78,9 @@ public class TowerUpgrades : MonoBehaviour
 
     public void CloseCanvas()
     {
+        DisableRange();
         upgradeCanvas.GetComponent<Canvas>().enabled = false;
+        selected = false;
     }    
 
     public void BuyTopUpgrade()

@@ -31,17 +31,20 @@ public class DragDrop : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (isDragging && placeable)
+        if (ModeManager.editMode)
         {
-            isDragging = false;
-            hover.isDraggingSomething = false;
-            renderer.color = Color.blue;
-        }
-        else if(!isDragging && !hover.isDraggingSomething)
-        {
-            hover.isDraggingSomething = true;
-            isDragging = true;
-            renderer.color = Color.green;
+            if (isDragging && placeable)
+            {
+                isDragging = false;
+                hover.isDraggingSomething = false;
+                renderer.color = Color.blue;
+            }
+            else if (!isDragging && !hover.isDraggingSomething)
+            {
+                hover.isDraggingSomething = true;
+                isDragging = true;
+                renderer.color = Color.green;
+            }
         }
     }
 
