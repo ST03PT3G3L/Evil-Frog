@@ -25,7 +25,6 @@ public class Tower : MonoBehaviour
         price = data.price_;
         bulletPrefab = data.bulletPrefab_;
         moneySpent = 0;
-        Debug.Log(data.price_);
     }
 
     private void OnDrawGizmosSelected()

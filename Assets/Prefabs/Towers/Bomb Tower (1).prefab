@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7730560957084097268}
   m_Layer: 7
   m_Name: Tower
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,6 +179,7 @@ MonoBehaviour:
   upgradeCanvas: {fileID: 406445372488713872}
   upgrade1Text: {fileID: 3772405971650389167}
   upgrade2Text: {fileID: 824455284035183359}
+  selected: 0
   upgrades:
   - name: Damage
     cost: 5
@@ -436,7 +437,7 @@ GameObject:
   - component: {fileID: 8843130076316350704}
   m_Layer: 7
   m_Name: Upgrade1
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -816,6 +817,18 @@ MonoBehaviour:
       - m_Target: {fileID: 7730560957084097268}
         m_TargetAssemblyTypeName: TowerUpgrades, Assembly-CSharp
         m_MethodName: CloseCanvas
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7730560957084097268}
+        m_TargetAssemblyTypeName: TowerUpgrades, Assembly-CSharp
+        m_MethodName: DisableRange
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1243,7 +1256,7 @@ GameObject:
   - component: {fileID: 1786987032104694380}
   m_Layer: 7
   m_Name: Bomb Tower (1)
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1395,7 +1408,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d9c09236a5d576046945d4dbb05ec8a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  segments: 15
+  segments: 50
   xradius: 0
   yradius: 0
 --- !u!1 &9048911295758756634
