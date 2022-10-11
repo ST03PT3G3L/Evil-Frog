@@ -9,11 +9,11 @@ public class DragDrop : MonoBehaviour
 
     public bool placeable = true;
     public bool isDragging;
-    private SpriteRenderer renderer;
+    //private SpriteRenderer renderer;
 
     void Start()
     {
-        renderer = GetComponent<SpriteRenderer>();
+        //renderer = GetComponent<SpriteRenderer>();
         if(GameObject.Find("HoverCheck").GetComponent<MouseHover>() != null)
         {
             hover = GameObject.Find("HoverCheck").GetComponent<MouseHover>();
@@ -37,13 +37,13 @@ public class DragDrop : MonoBehaviour
             {
                 isDragging = false;
                 hover.isDraggingSomething = false;
-                renderer.color = Color.blue;
+                //renderer.color = Color.blue;
             }
             else if (!isDragging && !hover.isDraggingSomething)
             {
                 hover.isDraggingSomething = true;
                 isDragging = true;
-                renderer.color = Color.green;
+                //renderer.color = Color.green;
             }
         }
     }
@@ -53,7 +53,7 @@ public class DragDrop : MonoBehaviour
         if (isDragging)
         {
             placeable = true;
-            renderer.color = Color.green;
+            //renderer.color = Color.green;
         }
     }
 
@@ -64,12 +64,12 @@ public class DragDrop : MonoBehaviour
             if (collision.gameObject.layer == 7)
             {
                 placeable = false;
-                renderer.color = Color.red;
+                //renderer.color = Color.red;
             }
             else
             {
                 placeable = true;
-                renderer.color = Color.green;
+                //renderer.color = Color.green;
             }
         }
     }
