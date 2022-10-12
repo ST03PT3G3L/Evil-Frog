@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class SoulForge : MonoBehaviour
 {
+    [SerializeField] private List<GameObject> towersTheForgeSells;
+
+    [SerializeField] ManageSoulForgeUI uiManager;
     [SerializeField] Currency curreny;
     [SerializeField] Transform pos;
+
+    private void Start()
+    {
+        uiManager.updateUI(towersTheForgeSells);
+    }
+
     public void BuyItem(GameObject preFab)
     {
         Tower tower = preFab.GetComponent<Tower>();
