@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6ab61a6cd39be542b7770b799860f0c, type: 3}
   m_Name: Normal Tower
   m_EditorClassIdentifier: 
+  name_: Normal Tower
   fireRate_: 1.5
   range_: 6
   damage_: 1

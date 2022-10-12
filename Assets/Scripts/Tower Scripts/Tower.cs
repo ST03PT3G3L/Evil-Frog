@@ -6,6 +6,7 @@ public class Tower : MonoBehaviour
 {
     [SerializeField] public TowerData data;
 
+    public string towerName;
     public float fireRate;
     public float range;
     public float damage;
@@ -19,6 +20,7 @@ public class Tower : MonoBehaviour
 
     public void UpdateData()
     {
+        towerName = data.name_;
         fireRate = data.fireRate_;
         range = data.range_;
         damage = data.damage_;

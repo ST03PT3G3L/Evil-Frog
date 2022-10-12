@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6ab61a6cd39be542b7770b799860f0c, type: 3}
   m_Name: Bomb Tower
   m_EditorClassIdentifier: 
+  name_: Bomb tower
   fireRate_: 0.5
   range_: 6
   damage_: 3.5
-  price_: 15
+  price_: 20
   bulletPrefab_: {fileID: 9138025207320898521, guid: 5fc2c0dd69638f14aa33d245dbd37382, type: 3}

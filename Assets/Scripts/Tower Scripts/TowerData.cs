@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Tower", menuName = "Tower")]
 public class TowerData : ScriptableObject
 {
+    [SerializeField] public string name_;
     [SerializeField] public float fireRate_;
     [SerializeField] public float range_;
     [SerializeField] public float damage_;

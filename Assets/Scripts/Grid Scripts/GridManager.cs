@@ -27,5 +27,6 @@ public class GridManager : MonoBehaviour
                 }
             }
         }
+        //enabled = false;
     }
 }
