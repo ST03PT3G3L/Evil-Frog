@@ -37,6 +37,7 @@ public class DragDrop : MonoBehaviour
             {
                 isDragging = false;
                 hover.isDraggingSomething = false;
+                gameObject.GetComponent<PathCollision>().CheckCollisions();
                 //renderer.color = Color.blue;
             }
             else if (!isDragging && !hover.isDraggingSomething)

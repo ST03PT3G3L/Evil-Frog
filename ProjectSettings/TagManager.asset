@@ -12,6 +12,7 @@ TagManager:
   - CurrencyHandler
   - Path
   - Turret
+  - Sprite
   layers:
   - Default
   - TransparentFX

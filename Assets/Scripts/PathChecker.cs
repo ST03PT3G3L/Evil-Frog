@@ -5,25 +5,17 @@ using UnityEngine;
 public class PathChecker : MonoBehaviour
 {
     [SerializeField] float timer;
-    bool onPath;
+    [SerializeField] bool onPath;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Lair")
+        if(collision.gameObject.tag == "Lair")
         {
             Debug.Log("Path is complete!");
             Destroy(gameObject);
         }
-        timer++;
-    }
+        else timer++;
 
-
-    private void OnCollisionStay2D(Collision2D collision)
-    {
-        if(collision.gameObject.tag == "Path")
-        {
-            onPath = true;
-        }
     }
 
     /*private void OnCollisionExit2D(Collision2D collision)
@@ -49,12 +41,19 @@ public class PathChecker : MonoBehaviour
 
     IEnumerator TimerDown()
     {
-        while (timer > 0)
+        yield return new WaitForSeconds(.1f);
+        timer -= 1;
+        CheckTimer();
+        Debug.Log("TickTock");
+    }
+
+    private void CheckTimer()
+    {
+        StartCoroutine(TimerDown());
+        if (timer <= 0)
         {
-            yield return new WaitForSeconds(.075f);
-            timer -= 1;
+            Debug.Log("Can't reach Lair!");
+            Destroy(gameObject);
         }
-        Debug.Log("Can't reach lair!");
-        Destroy(gameObject);
     }
 }

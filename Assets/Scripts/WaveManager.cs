@@ -34,7 +34,7 @@ public class WaveManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            StartCoroutine(InitiateNextRound());
+            //StartCoroutine(InitiateNextRound());
         }
 
         if (waveStarted)
