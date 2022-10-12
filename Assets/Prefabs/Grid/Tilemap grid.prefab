@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 918900206469352740}
   - component: {fileID: 918900206469352738}
   - component: {fileID: 918900206469352739}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: GroundTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8757,7 +8757,7 @@ GameObject:
   - component: {fileID: 918900206749094620}
   - component: {fileID: 918900206749094618}
   - component: {fileID: 918900206749094619}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: PathTilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8920,7 +8920,7 @@ GameObject:
   m_Component:
   - component: {fileID: 918900207402349366}
   - component: {fileID: 918900207402349367}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tilemap grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}

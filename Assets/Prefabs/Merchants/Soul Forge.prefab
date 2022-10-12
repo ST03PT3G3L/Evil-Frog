@@ -1,5 +1,60 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1682887987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1682887988}
+  - component: {fileID: 1682887989}
+  m_Layer: 0
+  m_Name: Soul Forge UI Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1682887988
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682887987}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6052462386592690067}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.000030517578, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1682887989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682887987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd05f184419764546ae3a971544e2a48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buyTexts:
+  - {fileID: 4659793817548635925}
+  - {fileID: 1187874580421694469}
+  priceTexts:
+  - {fileID: 4449773671991126618}
+  - {fileID: 5376075675003130175}
 --- !u!1 &948050976842619227
 GameObject:
   m_ObjectHideFlags: 0
@@ -35,6 +90,7 @@ RectTransform:
   - {fileID: 4572024245035142701}
   - {fileID: 6078736569387191416}
   - {fileID: 5521719612211063721}
+  - {fileID: 1682887988}
   m_Father: {fileID: 7397795118484854778}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -142,7 +198,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 73.75604, y: 6.406494}
+  m_AnchoredPosition: {x: 214, y: 27.998}
   m_SizeDelta: {x: 160, y: 112.2669}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7417017020297965489
@@ -227,13 +283,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ManageUI, Assembly-CSharp
-        m_MethodName: SwitchUIForModes
-        m_Mode: 6
+      - m_Target: {fileID: 1718067920503417287}
+        m_TargetAssemblyTypeName: SoulForge, Assembly-CSharp
+        m_MethodName: BuyItem
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 7750347905297450943, guid: 73b63722c88b96c4d95c20a2a90532c9, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -847,7 +903,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8762972799416959340}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: ManageUI, Assembly-CSharp
+        m_MethodName: ActivateUI
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Canvas, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4576097985554779974
 GameObject:
   m_ObjectHideFlags: 0
@@ -886,8 +954,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -6, y: 28}
-  m_SizeDelta: {x: 160, y: 112.27}
+  m_AnchoredPosition: {x: -119, y: 27.996}
+  m_SizeDelta: {x: 156.3218, y: 112.27}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8538676613720632597
 CanvasRenderer:
@@ -971,13 +1039,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ManageUI, Assembly-CSharp
-        m_MethodName: SwitchUIForModes
-        m_Mode: 6
+      - m_Target: {fileID: 1718067920503417287}
+        m_TargetAssemblyTypeName: SoulForge, Assembly-CSharp
+        m_MethodName: BuyItem
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 7511676889467314232, guid: 64c4771dc33da114b923fc0b6d091450, type: 3}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1301,6 +1369,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b4eb0b07d0316544bde511229433072, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towersTheForgeSells:
+  - {fileID: 7511676889467314232, guid: 64c4771dc33da114b923fc0b6d091450, type: 3}
+  - {fileID: 7750347905297450943, guid: 73b63722c88b96c4d95c20a2a90532c9, type: 3}
+  uiManager: {fileID: 1682887989}
   curreny: {fileID: 0}
   pos: {fileID: 0}
 --- !u!1 &7397795118484854779
