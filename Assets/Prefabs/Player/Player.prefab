@@ -203,6 +203,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   originPos: {x: 0, y: 0, z: 0}
   state: 0
+  facingRight: 1
 --- !u!114 &3377843768606367989
 MonoBehaviour:
   m_ObjectHideFlags: 0
