@@ -5,13 +5,15 @@ using UnityEngine;
 public class PlayerAI : MonoBehaviour
 {
     [SerializeField] public PlayerStats stats;
-    private Targetting targetting;
     [SerializeField] GameObject bulletPrefab;
-    
+    [SerializeField] Animator animator;
+
+    private Targetting targetting;
     private GameObject target;
     private float fireCountdown;
     [HideInInspector]public Vector3 originPos;
     public State state;
+    public bool facingRight = true;
 
     public enum State
     {
@@ -48,6 +50,20 @@ public class PlayerAI : MonoBehaviour
             return;
         }
 
+        //Automatically flip player when needed
+        if(target != null)
+        {
+            if (target.transform.position.x < transform.position.x && facingRight)
+            {
+                Flip();
+            }
+            if (target.transform.position.x > transform.position.x && !facingRight)
+            {
+                Flip();
+            }
+        }
+
+
         //If the enemy is close enought but too far away to attack, move towards it
         if(state == State.WalkingToEnemy)
         {
@@ -58,7 +74,6 @@ public class PlayerAI : MonoBehaviour
         //If the enemy is in attack range, attack it
         if(state == State.Attacking)
         {
-            transform.right = target.transform.position - transform.position;
 
             if (fireCountdown <= 0)
             {
@@ -103,5 +118,14 @@ public class PlayerAI : MonoBehaviour
 
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(originPos, getActualWalkRange());
+    }
+
+    public void Flip()
+    {
+        Vector3 currentScale = transform.localScale;
+        currentScale.x *= -1;
+        transform.localScale = currentScale;
+
+        facingRight = !facingRight;
     }
 }
