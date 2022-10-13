@@ -27,7 +27,7 @@ public class WaveManager : MonoBehaviour
     private void Start()
     {
         totalWaves = rounds.Count;
-        waveCountText.text = "Wave: " + roundNumber + "/" + totalWaves;
+        waveCountText.text = roundNumber + "/" + totalWaves;
     }
 
     void Update()
@@ -58,7 +58,7 @@ public class WaveManager : MonoBehaviour
     {
         waveStarted = true;
         int wave = roundNumber + 1;
-        waveCountText.text = "Wave: " + wave + "/" + totalWaves;
+        waveCountText.text = wave + "/" + totalWaves;
         StartCoroutine(InitiateNextRound());
     }
 

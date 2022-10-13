@@ -4317,9 +4317,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1036660987139082882, guid: e5ae290427e50ad4e99808a6712c5a9a, type: 3}
+      propertyPath: waveCountText
+      value: 
+      objectReference: {fileID: 6837438198727018869}
     - target: {fileID: 1036660987139082883, guid: e5ae290427e50ad4e99808a6712c5a9a, type: 3}
       propertyPath: m_Name
       value: WaveManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2548494027148543637, guid: e5ae290427e50ad4e99808a6712c5a9a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e5ae290427e50ad4e99808a6712c5a9a, type: 3}

@@ -36,6 +36,7 @@ public class PathCollision : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         collisions.Remove(collision.gameObject);
+        CheckCollisions();
     }
 
     public void CheckCollisions()
