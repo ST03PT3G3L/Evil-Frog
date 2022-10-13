@@ -31,6 +31,7 @@ public class TowerAI : MonoBehaviour
 
     void Shoot()
     {
+        gameObject.GetComponent<AudioSource>().Play();
         GameObject BulletGO = (GameObject)Instantiate(tower.bulletPrefab, transform.position, transform.rotation);
         Bullet bullet = BulletGO.GetComponent<Bullet>();
 
