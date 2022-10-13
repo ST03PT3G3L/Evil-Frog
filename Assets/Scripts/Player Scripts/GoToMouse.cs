@@ -25,6 +25,15 @@ public class GoToMouse : MonoBehaviour
             target.z = transform.position.z;
             player.state = PlayerAI.State.Walking;
             player.originPos = target;
+
+            if(target.x < transform.position.x && player.facingRight)
+            {
+                player.Flip();
+            }
+            if (target.x > transform.position.x && !player.facingRight)
+            {
+                player.Flip();
+            }
         }
 
         //Only walk to destination when commanded to

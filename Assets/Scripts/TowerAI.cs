@@ -17,7 +17,7 @@ public class TowerAI : MonoBehaviour
     {
         if (target == null) return;
 
-        transform.right = target.position - transform.position;
+        transform.up = -(target.position - transform.position);
 
         if (fireCountdown <= 0)
         {
