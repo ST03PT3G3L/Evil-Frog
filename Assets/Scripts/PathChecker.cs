@@ -44,7 +44,7 @@ public class PathChecker : MonoBehaviour
         yield return new WaitForSeconds(.1f);
         timer -= 1;
         CheckTimer();
-        Debug.Log("TickTock");
+        //Debug.Log("TickTock");
     }
 
     private void CheckTimer()

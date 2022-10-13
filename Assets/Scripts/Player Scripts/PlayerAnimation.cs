@@ -15,7 +15,8 @@ public class PlayerAnimation : MonoBehaviour
     private void Update()
     {
         if(player.state == PlayerAI.State.Walking ||
-            player.state == PlayerAI.State.WalkingToEnemy)
+            player.state == PlayerAI.State.WalkingToEnemy ||
+            player.state == PlayerAI.State.WalkingBack)
         {
             animator.SetBool("IsWalking", true);
             return;

@@ -6,7 +6,6 @@ public class PlayerAI : MonoBehaviour
 {
     [SerializeField] public PlayerStats stats;
     [SerializeField] GameObject bulletPrefab;
-    [SerializeField] Animator animator;
 
     private Targetting targetting;
     private GameObject target;
@@ -20,7 +19,8 @@ public class PlayerAI : MonoBehaviour
         Idle,
         Walking,
         Attacking,
-        WalkingToEnemy
+        WalkingToEnemy,
+        WalkingBack
     }
 
     private void Start()
@@ -43,15 +43,8 @@ public class PlayerAI : MonoBehaviour
         target = targetting.GetEnemy(stats.WalkRange, originPos);
         state = targetting.getState(target, stats.WalkRange, stats.Range, transform.position ,originPos);
 
-        //If there are no close enough targets, stay idle
-        if (state == State.Idle)
-        {
-            MoveTo(originPos);
-            return;
-        }
-
         //Automatically flip player when needed
-        if(target != null)
+        if (target != null)
         {
             if (target.transform.position.x < transform.position.x && facingRight)
             {
@@ -63,6 +56,13 @@ public class PlayerAI : MonoBehaviour
             }
         }
 
+        //If there are no close enough targets, stay idle
+        if (state == State.WalkingBack)
+        {
+            MoveTo(originPos);
+            return;
+        }
+
 
         //If the enemy is close enought but too far away to attack, move towards it
         if(state == State.WalkingToEnemy)
@@ -71,8 +71,14 @@ public class PlayerAI : MonoBehaviour
             return;
         }
 
+        //Do nothing if idle
+        if(state == State.Idle)
+        {
+            return;
+        }
+
         //If the enemy is in attack range, attack it
-        if(state == State.Attacking)
+        if(state == State.Attacking && target != null)
         {
 
             if (fireCountdown <= 0)
@@ -100,7 +106,26 @@ public class PlayerAI : MonoBehaviour
 
     public void MoveTo(Vector3 pos)
     {
-        transform.position = Vector3.MoveTowards(transform.position, pos, stats.Speed * Time.deltaTime);
+        if (transform.position != pos)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, pos, stats.Speed * Time.deltaTime);
+
+            if (pos.x < transform.position.x && facingRight)
+            {
+                Flip();
+            }
+            if (pos.x > transform.position.x && !facingRight)
+            {
+                Flip();
+            }
+
+            return;
+        }
+        else
+        {
+            state = State.Idle;
+            return;
+        }
     }
 
     public float getActualWalkRange()

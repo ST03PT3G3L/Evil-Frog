@@ -113,7 +113,7 @@ public class Targetting : MonoBehaviour
                 }
             }
         }
-        return PlayerAI.State.Idle;
+        return PlayerAI.State.WalkingBack;
     }
 }
 
