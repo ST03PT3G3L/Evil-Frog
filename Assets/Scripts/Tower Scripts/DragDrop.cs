@@ -37,7 +37,7 @@ public class DragDrop : MonoBehaviour
             {
                 isDragging = false;
                 hover.isDraggingSomething = false;
-                if(gameObject.tag == "path")
+                if(gameObject.tag == "Path")
                 {
                     gameObject.GetComponent<PathCollision>().CheckCollisions();
                 }

@@ -183,9 +183,9 @@ MonoBehaviour:
   selected: 0
   upgrades:
   - name: Damage
-    cost: 5
+    cost: 12
   - name: FireRate
-    cost: 5
+    cost: 12
 --- !u!82 &90152790
 AudioSource:
   m_ObjectHideFlags: 0

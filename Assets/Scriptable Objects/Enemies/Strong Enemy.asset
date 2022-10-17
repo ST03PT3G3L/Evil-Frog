@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a2b4c0c5c2c16c45acde6bfe06689b5, type: 3}
-  m_Name: Normal Enemy
+  m_Name: Strong Enemy
   m_EditorClassIdentifier: 
-  name_: Normal
-  maxHP_: 6
-  speed_: 3.2
-  worth_: 10
+  name_: Strong
+  maxHP_: 180
+  speed_: 1
+  worth_: 20

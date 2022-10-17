@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6837716861332516503}
   - component: {fileID: 1666246524}
   m_Layer: 0
-  m_Name: Normal Enemy
+  m_Name: Strong Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a744589619bebb4e8d2ff2d68eb7c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 51ba621c8fdaca4449de74f8c705f2c0, type: 2}
+  data: {fileID: 11400000, guid: 094402029b31ea5469dbc118a173cce0, type: 2}
   enemyName: 
   HP: 0
   speed: 0
