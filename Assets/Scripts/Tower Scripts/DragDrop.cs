@@ -6,6 +6,7 @@ public class DragDrop : MonoBehaviour
 {
     [SerializeField] MouseHover hover;
     [SerializeField] Transform origin;
+    [SerializeField] GameObject outline;
 
     public bool placeable = true;
     public bool isDragging;
@@ -17,6 +18,22 @@ public class DragDrop : MonoBehaviour
         if(GameObject.Find("HoverCheck").GetComponent<MouseHover>() != null)
         {
             hover = GameObject.Find("HoverCheck").GetComponent<MouseHover>();
+        }
+    }
+
+    private void OnMouseEnter()
+    {
+        if (outline != null)
+        {
+            outline.SetActive(true);
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        if (outline != null)
+        {
+            outline.SetActive(false);
         }
     }
 
@@ -69,12 +86,12 @@ public class DragDrop : MonoBehaviour
             if (collision.gameObject.layer == 7)
             {
                 placeable = false;
-                //renderer.color = Color.red;
+                outline.GetComponent<SpriteRenderer>().color = Color.red;
             }
             else
             {
                 placeable = true;
-                //renderer.color = Color.green;
+                outline.GetComponent<SpriteRenderer>().color = Color.green;
             }
         }
     }

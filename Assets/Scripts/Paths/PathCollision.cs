@@ -28,7 +28,11 @@ public class PathCollision : MonoBehaviour
     {
         if (collision.gameObject.tag == "Path" || collision.gameObject.tag == "Lair")
             {
-                collisions.Add(collision.gameObject);
+                if(collision.gameObject != gameObject.transform.parent)
+                {
+                    collisions.Add(collision.gameObject);
+                    CheckCollisions();
+                }
             }
 
     }
@@ -120,23 +124,23 @@ public class PathCollision : MonoBehaviour
         if (up && !left && !right)
         {
             spriteController.ChangeSprite(Up);
-            pathScript.direction = Directions.Up;
+            pathScript.direction = Directions.Straight;
         }
         if (down && !left && !right)
         {
             spriteController.ChangeSprite(Up);
-            pathScript.direction = Directions.Up;
+            pathScript.direction = Directions.Straight;
         }
 
         if(left && !down && !up && !right)
         {
             spriteController.ChangeSprite(Side);
-            pathScript.direction = Directions.Right;
+            pathScript.direction = Directions.Straight;
         }
         if (right && !down && !up && !left)
         {
             spriteController.ChangeSprite(Side);
-            pathScript.direction = Directions.Left;
+            pathScript.direction = Directions.Straight;
         }
     }
 }

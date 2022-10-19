@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3763889116041068626}
   - component: {fileID: 7433604055584416023}
   - component: {fileID: 7769501046642307002}
-  - component: {fileID: 5635447904406783815}
-  m_Layer: 7
+  - component: {fileID: 2043059150}
+  m_Layer: 9
   m_Name: DragDropCollider
   m_TagString: Path
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ MonoBehaviour:
   Side: {fileID: 1723985224181352031, guid: dd5521357a9d9ba428239e6e93cb7627, type: 3}
   spriteController: {fileID: 976517036}
   collisions: []
---- !u!60 &5635447904406783815
+--- !u!60 &2043059150
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
