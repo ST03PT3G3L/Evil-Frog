@@ -13,6 +13,9 @@ public class Tower : MonoBehaviour
     public float price;
     public GameObject bulletPrefab;
     public float moneySpent;
+
+    public List<GameObject> modules = new List<GameObject>();
+
     void Start()
     {
         UpdateData();
@@ -27,6 +30,11 @@ public class Tower : MonoBehaviour
         price = data.price_;
         bulletPrefab = data.bulletPrefab_;
         moneySpent = 0;
+    }
+
+    public void AddModule(GameObject module)
+    {
+        modules.Add(module);
     }
 
     private void OnDrawGizmosSelected()
