@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class DragDrop : MonoBehaviour
 {
@@ -44,7 +45,7 @@ public class DragDrop : MonoBehaviour
 
                 //renderer.color = Color.blue;
             }
-            else if (!isDragging && !hover.isDraggingSomething)
+            else if (!isDragging && !hover.isDraggingSomething && !EventSystem.current.IsPointerOverGameObject())
             {
                 hover.isDraggingSomething = true;
                 isDragging = true;

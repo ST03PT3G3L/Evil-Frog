@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RewardManager : MonoBehaviour
 {
+    [SerializeField] private ManageUI uiManager;
+    [SerializeField] private EnableOnChoice buttonDisabler;
     string reward = "";
 
     public void ChooseMoney()
@@ -18,18 +20,15 @@ public class RewardManager : MonoBehaviour
 
     public void StartWave()
     {
-        foreach (Transform child in transform)
-        {
-            child.gameObject.SetActive(false);
-        }
+        uiManager.SwitchUIForModes(false);
+
     }
 
     public void EndWave()
     {
-        foreach (Transform child in transform)
-        {
-            child.gameObject.SetActive(true);
-        }
+        uiManager.SwitchUIForModes(true);
+        buttonDisabler.enableOrDisableButton(false);
+
 
         GameObject currencyHandler = GameObject.FindGameObjectWithTag("CurrencyHandler");
         switch (reward)
