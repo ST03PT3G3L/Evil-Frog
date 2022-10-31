@@ -769,6 +769,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b49c2638cefadb41aba76f51a7808f8, type: 3}
+--- !u!1 &907848181 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7750347905297450943, guid: 73b63722c88b96c4d95c20a2a90532c9, type: 3}
+  m_PrefabInstance: {fileID: 1470033354}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &926356975
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1522,10 +1527,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6274519457123098207, guid: 64c4771dc33da114b923fc0b6d091450, type: 3}
-      propertyPath: m_AdditionalShaderChannelsFlag
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 513886431, guid: 64c4771dc33da114b923fc0b6d091450, type: 3}
+      propertyPath: tower
+      value: 
+      objectReference: {fileID: 907848181}
     - target: {fileID: 7511676889467314232, guid: 64c4771dc33da114b923fc0b6d091450, type: 3}
       propertyPath: m_Name
       value: Normal Tower 1
@@ -1573,10 +1578,6 @@ PrefabInstance:
     - target: {fileID: 7511676889467314233, guid: 64c4771dc33da114b923fc0b6d091450, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8706023202489804013, guid: 64c4771dc33da114b923fc0b6d091450, type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64c4771dc33da114b923fc0b6d091450, type: 3}

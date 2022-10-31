@@ -37,6 +37,11 @@ public class Tower : MonoBehaviour
         modules.Add(module);
     }
 
+    public void RemoveModule(GameObject module)
+    {
+        modules.Remove(module);
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;

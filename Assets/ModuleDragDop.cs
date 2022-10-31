@@ -8,7 +8,12 @@ public class ModuleDragDop : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     private RectTransform recTransform;
     private CanvasGroup canvasGroup;
 
+    public GameObject Tower;
+
     [SerializeField] private Canvas canvas;
+
+    Vector2 originalPos;
+    public bool inSpot;
 
     private void Awake()
     {
@@ -18,13 +23,19 @@ public class ModuleDragDop : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        originalPos = recTransform.anchoredPosition;
         Debug.Log("OnPointerDown");
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        inSpot = false;
         canvasGroup.alpha = .75f;
         canvasGroup.blocksRaycasts = false;
+        if (Tower != null)
+        {
+            Tower.GetComponent<Tower>().RemoveModule(gameObject);
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -36,5 +47,14 @@ public class ModuleDragDop : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     {
         canvasGroup.alpha = 1f;
         canvasGroup.blocksRaycasts = true;
+
+        if(!inSpot)
+        {
+            recTransform.anchoredPosition = originalPos;
+            if (Tower != null)
+            {
+                Tower.GetComponent<Tower>().AddModule(gameObject);
+            }
+        }
     }
 }

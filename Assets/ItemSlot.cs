@@ -5,11 +5,10 @@ using UnityEngine.EventSystems;
 
 public class ItemSlot : MonoBehaviour, IDropHandler
 {
-    [SerializeField] Tower tower;
+    [SerializeField] GameObject tower;
 
     private void Awake()
     {
-        tower = GetComponentInParent<Tower>();
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -17,7 +16,9 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         if(eventData.pointerDrag != null)
         {
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
-            tower.AddModule(eventData.pointerDrag.gameObject);
+            tower.GetComponent<Tower>().AddModule(eventData.pointerDrag.gameObject);
+            eventData.pointerDrag.GetComponent<ModuleDragDop>().inSpot = true;
+            eventData.pointerDrag.GetComponent<ModuleDragDop>().Tower = tower;
         }
     }
 }
