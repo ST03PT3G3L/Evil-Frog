@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerAI : MonoBehaviour
+public class TackShooterAI : MonoBehaviour
 {
-    
+    [SerializeField] private int totalBullets;
     private Tower tower;
     private Transform target;
     private float fireCountdown;
@@ -33,33 +33,24 @@ public class TowerAI : MonoBehaviour
 
     void Shoot()
     {
-        modules = tower.modules;
-        gameObject.GetComponent<AudioSource>().Play();
-        GameObject BulletGO = (GameObject)Instantiate(tower.bulletPrefab, transform.position, transform.rotation);
-        Bullet bullet = BulletGO.GetComponent<Bullet>();
+        float rotation = 360;
+        float interval;
+        List<GameObject> bullets = new List<GameObject>();
 
-        if(bullet != null)
+        for(int i = 0; i < totalBullets; i++)
         {
-            if(modules.Count >= 1)
-            {
-                int i = 0;
-                foreach(GameObject m in modules)
-                {
-                    if(i == 0)
-                    {
-                        bullet.attribute1 = m.GetComponent<ModuleStats>().type;
-                    }
-                    if(i == 1)
-                    {
-                        bullet.attribute2 = m.GetComponent<ModuleStats>().type;
-                    }
-                    i++;
-                }
-            }
-            bullet.SetDamage(tower.damage);
-            bullet.Seek(target);
+            bullets.Add(tower.bulletPrefab);
         }
-        Debug.Log("Shoot");
+
+        interval = 360 / bullets.Count;
+
+        foreach(GameObject bullet in bullets)
+        {
+            Instantiate(bullet, transform.position, Quaternion.Euler(0f, 0f, 360f));
+            bullet.GetComponent<Rigidbody2D>().AddForce(transform.forward * 5);
+            rotation -= interval;
+            Destroy(bullet, 5f);
+        }
     }
 
     void UpdateTarget()
@@ -71,14 +62,14 @@ public class TowerAI : MonoBehaviour
         foreach (GameObject enemy in enemies)
         {
             float distanceToEnemy = Vector2.Distance(transform.position, enemy.transform.position);
-            if(distanceToEnemy < shortestDistance)
+            if (distanceToEnemy < shortestDistance)
             {
                 shortestDistance = distanceToEnemy;
                 nearestEnemy = enemy;
             }
         }
 
-        if(nearestEnemy != null && shortestDistance <= tower.range)
+        if (nearestEnemy != null && shortestDistance <= tower.range)
         {
             target = nearestEnemy.transform;
         }
@@ -87,6 +78,4 @@ public class TowerAI : MonoBehaviour
             target = null;
         }
     }
-
-
 }

@@ -17,8 +17,10 @@ public class ModuleDragDop : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
 
     private void Awake()
     {
+        GetComponent<Animator>().SetBool("Spawned", true);
         recTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
+        canvas = GameObject.FindGameObjectWithTag("MainUI").GetComponent<Canvas>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -29,6 +31,7 @@ public class ModuleDragDop : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        GetComponent<Animator>().SetBool("Spawned", false);
         inSpot = false;
         canvasGroup.alpha = .75f;
         canvasGroup.blocksRaycasts = false;

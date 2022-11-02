@@ -16,6 +16,7 @@ public class ItemSlot : MonoBehaviour, IDropHandler
         if(eventData.pointerDrag != null)
         {
             eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = GetComponent<RectTransform>().anchoredPosition;
+            eventData.pointerDrag.gameObject.transform.SetParent(transform.parent);
             tower.GetComponent<Tower>().AddModule(eventData.pointerDrag.gameObject);
             eventData.pointerDrag.GetComponent<ModuleDragDop>().inSpot = true;
             eventData.pointerDrag.GetComponent<ModuleDragDop>().Tower = tower;

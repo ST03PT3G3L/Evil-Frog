@@ -6,6 +6,7 @@ using UnityEngine;
 public class TowerUpgrades : MonoBehaviour
 {
     [SerializeField] Canvas upgradeCanvas;
+    [SerializeField] Canvas moduleInventory;
 
     [SerializeField] TextMeshProUGUI upgrade1Text;
     [SerializeField] TextMeshProUGUI upgrade2Text;
@@ -65,6 +66,7 @@ public class TowerUpgrades : MonoBehaviour
     {
         selected = true;
         upgradeCanvas.GetComponent<Canvas>().enabled = true;
+        moduleInventory.GetComponent<Canvas>().enabled = true;
         GetComponentInParent<Range>().enabled = true;
         GetComponentInParent<LineRenderer>().enabled = true;
         //Debug.Log("Right Clicked on Tower");
@@ -80,6 +82,7 @@ public class TowerUpgrades : MonoBehaviour
     {
         DisableRange();
         upgradeCanvas.GetComponent<Canvas>().enabled = false;
+        moduleInventory.GetComponent<Canvas>().enabled = false;
         selected = false;
     }    
 

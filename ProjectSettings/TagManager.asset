@@ -13,6 +13,7 @@ TagManager:
   - Path
   - Turret
   - Sprite
+  - MainUI
   layers:
   - Default
   - TransparentFX
