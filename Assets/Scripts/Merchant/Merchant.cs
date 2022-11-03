@@ -6,12 +6,35 @@ public class Merchant : MonoBehaviour
 {
     [SerializeField] Currency curreny;
     [SerializeField] Transform pos;
-    public void BuyItem(Item item)
+    [SerializeField] ManageMerchantUI UI;
+
+    [SerializeField] List<GameObject> sellableItems;
+    MerchantItem[] itemsSelling = new MerchantItem[3];
+
+    private void Start()
     {
-        item.UpdateData();
-        if (curreny.money >= item.price)
+        RandomizeShop();
+        UI.updateUI(itemsSelling);
+    }
+
+    private void RandomizeShop()
+    {
+        for (int i = 0; i < 3; i++)
         {
-            curreny.loseMoney((int)item.price);
+            int rndm = Random.Range(0, sellableItems.Count);
+            sellableItems[rndm].GetComponent<Item>().UpdateData();
+            itemsSelling[i] = sellableItems[rndm].GetComponent<MerchantItem>();
+            sellableItems.RemoveAt(rndm);
+        }
+    }
+
+    public void Buy(int i)
+    {
+        if (curreny.money >= itemsSelling[i].price)
+        {
+            curreny.loseMoney((int)itemsSelling[i].price);
+            Instantiate(itemsSelling[i].gameObject);
         }
     }
 }
+

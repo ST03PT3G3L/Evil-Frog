@@ -14,6 +14,8 @@ TagManager:
   - Turret
   - Sprite
   - MainUI
+  - PathInventory
+  - Merchant
   layers:
   - Default
   - TransparentFX

@@ -15,3 +15,4 @@ MonoBehaviour:
   name_: Player Damage Boost
   price_: 5
   description_: Boosts the player damage!
+  sprite_: {fileID: 21300000, guid: d4c33030ccb097e4e8e161a2b8d0da1c, type: 3}

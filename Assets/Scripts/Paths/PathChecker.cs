@@ -52,7 +52,7 @@ public class PathChecker : MonoBehaviour
         StartCoroutine(TimerDown());
         if (timer <= 0)
         {
-            Debug.Log("Can't reach Lair!");
+            //Debug.Log("Can't reach Lair!");
             Destroy(gameObject);
         }
     }

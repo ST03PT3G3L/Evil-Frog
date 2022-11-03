@@ -1,23 +1,33 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class DragDrop : MonoBehaviour
 {
     [SerializeField] MouseHover hover;
     [SerializeField] Transform origin;
     [SerializeField] GameObject outline;
+    private PathInventory pathInventory;
 
     public bool placeable = true;
     public bool isDragging;
-    //private SpriteRenderer renderer;
 
     void Start()
     {
-        //renderer = GetComponent<SpriteRenderer>();
-        if(GameObject.Find("HoverCheck").GetComponent<MouseHover>() != null)
+        GetNeededScripts();
+    }
+
+    private void GetNeededScripts()
+    {
+        if (GameObject.Find("HoverCheck").GetComponent<MouseHover>() != null)
         {
             hover = GameObject.Find("HoverCheck").GetComponent<MouseHover>();
+        }
+
+        if (GameObject.Find("PathInventory").GetComponent<PathInventory>() != null)
+        {
+            pathInventory = GameObject.Find("PathInventory").GetComponent<PathInventory>();
         }
     }
 
@@ -50,24 +60,21 @@ public class DragDrop : MonoBehaviour
     {
         if (ModeManager.editMode)
         {
-            if (isDragging && placeable)
+            if (isDragging)
             {
-                isDragging = false;
-                hover.isDraggingSomething = false;
-                if(gameObject.tag == "Path")
-                {
-                    gameObject.GetComponent<PathCollision>().CheckCollisions();
-                }
-
-                //renderer.color = Color.blue;
+                DropDown();
             }
-            else if (!isDragging && !hover.isDraggingSomething)
+            else if (!isDragging && !hover.isDraggingSomething && !EventSystem.current.IsPointerOverGameObject())
             {
-                hover.isDraggingSomething = true;
-                isDragging = true;
-                //renderer.color = Color.green;
+                PickUp();
             }
         }
+    }
+
+    IEnumerator timer()
+    {
+        yield return new WaitForSeconds(0.5f);
+        pathInventory.currentPath = null;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -96,6 +103,32 @@ public class DragDrop : MonoBehaviour
         }
     }
 
+    public void PickUp()
+    {
+        if (gameObject.tag == "Path")
+        {
+            if(pathInventory == null || hover == null)
+            {
+                GetNeededScripts();
+            }
+            pathInventory.currentPath = gameObject;
+        }
+        hover.isDraggingSomething = true;
+        isDragging = true;
+    }
 
+    public void DropDown()
+    {
+        if (placeable)
+        {
+            isDragging = false;
+            hover.isDraggingSomething = false;
+            if (gameObject.tag == "Path")
+            {
+                gameObject.GetComponent<PathCollision>().CheckCollisions();
+                StartCoroutine(timer());
+            }
+        }
+    }
 
 }
