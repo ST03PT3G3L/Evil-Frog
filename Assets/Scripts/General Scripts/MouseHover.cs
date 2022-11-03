@@ -22,12 +22,13 @@ public class MouseHover : MonoBehaviour
         if (collision.transform != null)
         {
             currentlyHovering = collision.transform;
+
         }
     }
 
     private void OnMouseDown()
     {
-        if(currentlyHovering.tag == "Dragable")
+        if (currentlyHovering.tag == "Dragable")
         {
             DragDrop dragginObject = currentlyHovering.GetComponent<DragDrop>();
             dragginObject.isDragging = !dragginObject.isDragging;

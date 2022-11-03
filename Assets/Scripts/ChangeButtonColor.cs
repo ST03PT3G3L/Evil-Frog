@@ -18,6 +18,7 @@ public class ChangeButtonColor : MonoBehaviour
         if(i <= colors.Count)
         {
             //image.colors = colors[i];
+            
         }
     }
 }

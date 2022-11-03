@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class MoveCamera : MonoBehaviour
 {
+    [SerializeField] MapExpanding map;
+    [SerializeField] float screenSize;
     [SerializeField] float speed = 1;
     [SerializeField] KeyCode upKey = KeyCode.W;
     [SerializeField] KeyCode downKey = KeyCode.S;
@@ -14,6 +16,24 @@ public class MoveCamera : MonoBehaviour
 
 
     void Update()
+    {
+        if(map != null)
+        {
+            if ((transform.position.y < map.levelsUnlocked * -screenSize && Input.GetKey(downKey)) ||
+                (transform.position.y > 10 && Input.GetKey(upKey)))
+            {
+                return;
+            }
+
+            if(map.levelsUnlocked == 0)
+            {
+                return;
+            }
+        }
+        moveCam();
+    }
+
+    public void moveCam()
     {
         if (Input.GetKey(rightKey) && devMode)
         {

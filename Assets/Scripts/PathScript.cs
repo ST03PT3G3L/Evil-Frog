@@ -11,4 +11,9 @@ public class PathScript : MonoBehaviour
         if(collision.tag == "Enemy" || collision.tag == "Checker")
         collision.GetComponent<EnemyMovement>().Movement(direction);
     }
+
+    public void destroySelf()
+    {
+        Destroy(gameObject);
+    }
 }

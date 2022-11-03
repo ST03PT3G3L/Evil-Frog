@@ -13,6 +13,7 @@ public class Tower : MonoBehaviour
     public float price;
     public GameObject bulletPrefab;
     public float moneySpent;
+    public string type;
     void Start()
     {
         UpdateData();
@@ -27,6 +28,7 @@ public class Tower : MonoBehaviour
         price = data.price_;
         bulletPrefab = data.bulletPrefab_;
         moneySpent = 0;
+        type = data.type_;
     }
 
     private void OnDrawGizmosSelected()
