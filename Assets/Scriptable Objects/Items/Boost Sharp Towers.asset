@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b17943b4a8eb44e479e7f741c8dc48d7, type: 3}
+  m_Name: Boost Sharp Towers
+  m_EditorClassIdentifier: 
+  name_: Sharpening Stone
+  price_: 8
+  description_: Boosts all sharp towers.
+  sprite_: {fileID: 21300000, guid: 247830eaa9e04fe438f778e5d55a5b57, type: 3}

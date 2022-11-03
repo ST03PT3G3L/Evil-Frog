@@ -199,8 +199,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 3377843768606367989}
-  bulletPrefab: {fileID: 9138025207320898521, guid: e86e0628936f78b49b8f1530c5617941, type: 3}
-  animator: {fileID: 0}
+  bulletPrefab: {fileID: 9138025207320898521, guid: 49291186653868c4a9a5b2042fecafc9, type: 3}
   originPos: {x: 0, y: 0, z: 0}
   state: 0
   facingRight: 1
@@ -217,9 +216,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireRate: 1
-  range: 2
-  walkRange: 4
-  damage: 1
+  range: 6
+  walkRange: 3
+  damage: 2
   speed: 4
 --- !u!114 &1492104204
 MonoBehaviour:
@@ -233,4 +232,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb4c95cb6f0b4b94991bcebcde5118ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetOption: 1
+  targetOption: 0

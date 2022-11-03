@@ -8,6 +8,7 @@ public class ManageUI : MonoBehaviour
     [SerializeField] private Canvas editModeUI;
     [SerializeField] private Canvas merchantUI;
     [SerializeField] private Canvas soulsForgeUI;
+    [SerializeField] private Canvas itemUI;
 
     private void Start()
     {
@@ -19,6 +20,7 @@ public class ManageUI : MonoBehaviour
     {
         merchantUI.enabled = false;
         soulsForgeUI.enabled = false;
+        itemUI.enabled = false;
 
         ui.enabled = true;
     }

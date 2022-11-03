@@ -16,6 +16,7 @@ public class Tower : MonoBehaviour
 
     public List<GameObject> modules = new List<GameObject>();
 
+    public string type;
     void Start()
     {
         UpdateData();
@@ -30,6 +31,7 @@ public class Tower : MonoBehaviour
         price = data.price_;
         bulletPrefab = data.bulletPrefab_;
         moneySpent = 0;
+        type = data.type_;
     }
 
     public void AddModule(GameObject module)

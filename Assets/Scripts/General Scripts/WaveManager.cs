@@ -6,6 +6,8 @@ using UnityEngine;
 public class WaveManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI waveCountText;
+    [SerializeField] private GameObject merchantObject;
+    private MapExpanding expander;
     public GameObject player;
     public GameObject[] enemySpawners;
 
@@ -26,6 +28,7 @@ public class WaveManager : MonoBehaviour
 
     private void Start()
     {
+        expander = GetComponent<MapExpanding>();
         totalWaves = rounds.Count;
         waveCountText.text = roundNumber + "/" + totalWaves;
     }
@@ -41,7 +44,6 @@ public class WaveManager : MonoBehaviour
         {
             ModeManager.editMode = false;
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            Debug.Log(enemies.Length);
             if (enemies.Length == 0)
             {
                 WaveEnd();
@@ -56,6 +58,11 @@ public class WaveManager : MonoBehaviour
 
     public void StartRound()
     {
+        if (GameObject.FindGameObjectWithTag("Merchant") != null)
+        {
+            Destroy(GameObject.FindGameObjectWithTag("Merchant"));
+        }
+
         waveStarted = true;
         int wave = roundNumber + 1;
         waveCountText.text = wave + "/" + totalWaves;
@@ -100,5 +107,12 @@ public class WaveManager : MonoBehaviour
         waveStarted = false;
         BroadcastMessage("EndWave");
         roundNumber++;
+
+        if (merchantObject != null && roundNumber % 2 == 0 && roundNumber != 0) 
+        { 
+            Instantiate(merchantObject, merchantObject.GetComponent<MerchantArrival>().startPos, Quaternion.identity); 
+        }
+        if (expander != null) 
+        { expander.Expand(roundNumber); }
     }
 }
