@@ -35,7 +35,8 @@ public class Bullet : MonoBehaviour
             return;
         }
 
-        transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+            transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+        
     }
 
     void HitTarget()
@@ -54,6 +55,11 @@ public class Bullet : MonoBehaviour
                 explosion.GetComponent<ExplosionEffect>().attribute1 = attribute1;
                 Destroy(gameObject);
                 Destroy(explosion, 5f);
+                break;
+            case BulletType.SniperBullet:
+                SetStatus(target);
+                target.GetComponent<EnemyHealth>().ReceiveDamage(damage);
+                Destroy(gameObject);
                 break;
         }
         

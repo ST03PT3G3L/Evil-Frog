@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using UnityEditor;
 /// <summary>
 /// This class contain custom drawer for ReadOnly attribute.
@@ -23,4 +23,4 @@ public class ReadOnlyDrawer : PropertyDrawer
         // Setting old GUI enabled value
         GUI.enabled = previousGUIState;
     }
-}
+}*/

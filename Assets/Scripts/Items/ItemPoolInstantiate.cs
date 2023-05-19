@@ -9,5 +9,4 @@ public class ItemPoolInstantiate : MonoBehaviour
     {
         ItemPool.itemPool = itemPool_;
     }
-
 }

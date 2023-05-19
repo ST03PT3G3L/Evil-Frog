@@ -9,6 +9,8 @@ public class MoveCamera : MonoBehaviour
     [SerializeField] float speed = 1;
     [SerializeField] KeyCode upKey = KeyCode.W;
     [SerializeField] KeyCode downKey = KeyCode.S;
+    [SerializeField] KeyCode upKey2 = KeyCode.UpArrow;
+    [SerializeField] KeyCode downKey2 = KeyCode.DownArrow;
 
     [SerializeField] bool devMode = true;
     [SerializeField] KeyCode leftKey = KeyCode.A; //Dev
@@ -17,15 +19,15 @@ public class MoveCamera : MonoBehaviour
 
     void Update()
     {
-        if(map != null)
+        if (map != null && !devMode)
         {
             if ((transform.position.y < map.levelsUnlocked * -screenSize && Input.GetKey(downKey)) ||
-                (transform.position.y > 10 && Input.GetKey(upKey)))
+                (transform.position.y > -0.1 && Input.GetKey(upKey)))
             {
                 return;
             }
 
-            if(map.levelsUnlocked == 0)
+            if (map.levelsUnlocked == 0)
             {
                 return;
             }
@@ -43,11 +45,11 @@ public class MoveCamera : MonoBehaviour
         {
             transform.Translate(new Vector3(-speed * Time.deltaTime, 0, 0));
         }
-        if (Input.GetKey(downKey))
+        if (Input.GetKey(downKey) || Input.GetKey(downKey2))
         {
             transform.Translate(new Vector3(0, -speed * Time.deltaTime, 0));
         }
-        if (Input.GetKey(upKey))
+        if (Input.GetKey(upKey) || Input.GetKey(upKey2))
         {
             transform.Translate(new Vector3(0, speed * Time.deltaTime, 0));
         }

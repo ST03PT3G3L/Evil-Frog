@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Targetting : MonoBehaviour
 {
+    private int i = -1;
+    [SerializeField] TextMeshProUGUI text;
     private enum TargetOption
     {
         First,
@@ -12,6 +16,11 @@ public class Targetting : MonoBehaviour
     }
 
     [SerializeField] TargetOption targetOption;
+
+    private void Start()
+    {
+        OnButtonClick();       
+    }
 
     public GameObject GetEnemy(float walkRange, Vector2 playerPos)
     {
@@ -114,6 +123,37 @@ public class Targetting : MonoBehaviour
             }
         }
         return PlayerAI.State.WalkingBack;
+    }
+
+    public void OnButtonClick()
+    {
+        if(text == null)
+        {
+            return;
+        }
+        i++;
+        if(i > 2)
+        {
+            i = 0;
+        }
+
+        switch (i)
+        {
+            case 0: 
+                targetOption = TargetOption.First;
+                text.text = "First";
+                break;
+            case 1:
+                targetOption = TargetOption.Last;
+                text.text = "Last";
+                break;
+            case 2:
+                targetOption = TargetOption.Close;
+                text.text = "Close";
+                break;
+            default:
+                break;
+        }   
     }
 }
 

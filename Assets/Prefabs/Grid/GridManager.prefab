@@ -46,5 +46,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   width: 60
   height: 30
-  cellSize: 1
+  cellSize: 1.1
   tilePrefab: {fileID: 5070187831145043657, guid: ddb08815ce386d243a1784331695e89b, type: 3}
+  cam: {fileID: 0}

@@ -9,9 +9,13 @@ public class TowerAI : MonoBehaviour
     private Transform target;
     private float fireCountdown;
     private List<GameObject> modules = new List<GameObject>();
+    private Targetting targetting;
+    [SerializeField] private Transform rotation;
+
     private void Start()
     {
         tower = GetComponentInParent<Tower>();
+        targetting = GetComponent<Targetting>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
@@ -19,7 +23,15 @@ public class TowerAI : MonoBehaviour
     {
         if (target == null) return;
 
-        transform.up = -(target.position - transform.position);
+        if(rotation != null)
+        {
+            rotation.up = -(target.position - rotation.position);
+        }
+        else
+        {
+            transform.up = -(target.position - transform.position);
+        }
+
 
         if (fireCountdown <= 0)
         {
@@ -59,12 +71,21 @@ public class TowerAI : MonoBehaviour
             bullet.SetDamage(tower.damage);
             bullet.Seek(target);
         }
-        Debug.Log("Shoot");
     }
 
     void UpdateTarget()
     {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject targetObject = targetting.GetEnemy(tower.range, transform.position);
+        if(targetObject == null)
+        {
+            target = null;
+            return;
+        }
+        target = targetObject.transform;
+        
+
+
+      /*  GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         float shortestDistance = Mathf.Infinity;
         GameObject nearestEnemy = null;
 
@@ -85,8 +106,6 @@ public class TowerAI : MonoBehaviour
         else
         {
             target = null;
-        }
-    }
-
-
+        } */
+    } 
 }

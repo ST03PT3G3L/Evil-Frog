@@ -12,6 +12,9 @@ public class Currency : MonoBehaviour
     [SerializeField] TextMeshProUGUI soulsText;
     [SerializeField] public int souls;
 
+    [SerializeField] AudioSource coinsGet;
+    [SerializeField] AudioSource soulsGet;
+
     private void Start()
     {
         UpdateText();
@@ -26,12 +29,14 @@ public class Currency : MonoBehaviour
     public void EarnMoney(int moneyEarned)
     {
         money += moneyEarned;
+        coinsGet.Play();
         UpdateText();
     }
 
     public void EarnSouls(int soulsEarned)
     {
         souls += soulsEarned;
+        soulsGet.Play();
         UpdateText();
     }
 

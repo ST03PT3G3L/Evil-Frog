@@ -39,6 +39,7 @@ public class PathCollision : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
+        Debug.Log(collision);
         collisions.Remove(collision.gameObject);
         CheckCollisions();
     }
@@ -87,14 +88,6 @@ public class PathCollision : MonoBehaviour
             }
         }
         ChangePath();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            spriteController.ChangeSprite(Right);
-        }
     }
 
     private void ChangePath()

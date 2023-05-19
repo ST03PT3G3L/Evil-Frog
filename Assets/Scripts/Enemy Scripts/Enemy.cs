@@ -10,7 +10,6 @@ public class Enemy : MonoBehaviour
     public float HP;
     public float speed;
     public float worth;
-    public string type;
 
     private float timeAlive;
     public float distanceToEnd;
@@ -27,7 +26,6 @@ public class Enemy : MonoBehaviour
         HP = data.maxHP_;
         speed = data.speed_;
         worth = data.worth_;
-        type = data.type_;
     }
 
     private void Update()

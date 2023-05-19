@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3045693366629780880}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: PathUpSprite
   m_TagString: Sprite
   m_Icon: {fileID: 0}

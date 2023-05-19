@@ -7,6 +7,8 @@ public class TowerHealth : MonoBehaviour
 {
     [SerializeField] public float health;
     [SerializeField] TextMeshProUGUI healthText;
+    [SerializeField] Canvas gameOverCanvas;
+    [SerializeField] AudioSource getHitSource;
 
     private void Start()
     {
@@ -20,7 +22,12 @@ public class TowerHealth : MonoBehaviour
             Destroy(collision.gameObject);
             health -= 1;
             healthText.text = health.ToString();
-            Debug.Log("HIT!");
+            getHitSource.Play();
+        }
+
+        if(health <= 0)
+        {
+            gameOverCanvas.enabled = true;
         }
     }
 }

@@ -13,6 +13,7 @@ public class PlayerAI : MonoBehaviour
     [HideInInspector]public Vector3 originPos;
     public State state;
     public bool facingRight = true;
+    [SerializeField] private Canvas canvas;
 
     public enum State
     {
@@ -27,11 +28,21 @@ public class PlayerAI : MonoBehaviour
     {
         targetting = GetComponent<Targetting>();
         originPos = transform.position;
+        //canvas = GetComponentInChildren<Canvas>();
     }
 
     private void Update()
     {
-        if(fireCountdown > 0)
+        if((transform.position.x < -40 && !facingRight!) || (transform.position.x > -4 && facingRight))
+        {
+            canvas.transform.localPosition = new Vector3(-5, 0, 0);
+        }
+        else
+        {
+            canvas.transform.localPosition = new Vector3(5, 0, 0);
+        }
+
+        if (fireCountdown > 0)
         {
             fireCountdown -= Time.deltaTime;
         }
@@ -150,6 +161,7 @@ public class PlayerAI : MonoBehaviour
         Vector3 currentScale = transform.localScale;
         currentScale.x *= -1;
         transform.localScale = currentScale;
+        canvas.transform.localScale = currentScale;
 
         facingRight = !facingRight;
     }

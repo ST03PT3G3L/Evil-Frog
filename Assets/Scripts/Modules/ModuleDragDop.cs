@@ -21,6 +21,7 @@ public class ModuleDragDop : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
         recTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
         canvas = GameObject.FindGameObjectWithTag("MainUI").GetComponent<Canvas>();
+        WhatToDoTextChanger.text.text = "Drag the module to your inventory or into a tower slot (Click on the tower)";
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -44,6 +45,7 @@ public class ModuleDragDop : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
     public void OnDrag(PointerEventData eventData)
     {
         recTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+        WhatToDoTextChanger.text.text = "Drag the module to your inventory or into a tower slot (Click on the tower)";
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -59,5 +61,7 @@ public class ModuleDragDop : MonoBehaviour, IPointerDownHandler, IBeginDragHandl
                 Tower.GetComponent<Tower>().AddModule(gameObject);
             }
         }
+
+        WhatToDoTextChanger.text.text = "";
     }
 }

@@ -11,9 +11,20 @@ public class TowerUpgrades : MonoBehaviour
     [SerializeField] TextMeshProUGUI upgrade1Text;
     [SerializeField] TextMeshProUGUI upgrade2Text;
 
+    [SerializeField] TextMeshProUGUI upgrade1CostText;
+    [SerializeField] TextMeshProUGUI upgrade2CostText;
+
+    public TextMeshProUGUI upgrade1BoughtText;
+    public TextMeshProUGUI upgrade2BoughtText;
+
+    public float upgrade1Bought;
+    public float upgrade2Bought;
+
     private Tower stats;
 
     public bool selected = false;
+
+    [SerializeField] AudioSource upgradeSource;
 
     [System.Serializable]
     public class Upgrade
@@ -39,7 +50,7 @@ public class TowerUpgrades : MonoBehaviour
         RandomizeUpgrade();
     }
 
-    private void OnMouseOver()
+  /*  private void OnMouseOver()
     {
         if(ModeManager.editMode)
         if(Input.GetMouseButtonDown(1))
@@ -69,8 +80,7 @@ public class TowerUpgrades : MonoBehaviour
         moduleInventory.GetComponent<Canvas>().enabled = true;
         GetComponentInParent<Range>().enabled = true;
         GetComponentInParent<LineRenderer>().enabled = true;
-        //Debug.Log("Right Clicked on Tower");
-    }
+    } */
 
     public void DisableRange()
     {
@@ -84,20 +94,35 @@ public class TowerUpgrades : MonoBehaviour
         upgradeCanvas.GetComponent<Canvas>().enabled = false;
         moduleInventory.GetComponent<Canvas>().enabled = false;
         selected = false;
-    }    
+    }
+
+    public void BoughtUpgrade1()
+    {
+        upgrade1Bought++;
+        upgrade1BoughtText.text = upgrade1Bought.ToString();
+    }
+
+    public void BoughtUpgrade2()
+    {
+        upgrade2Bought++;
+        upgrade2BoughtText.text = upgrade2Bought.ToString();
+    }
 
     public void BuyTopUpgrade()
     {
         switch (upgrade1Name)
         {
-            case "Damage":
+            case "+Damage":
                 if (currencyHandler.GetComponent<Currency>().souls >= upgrade1Cost)
                 {
 
                     stats.moneySpent += upgrade1Cost;
                     Debug.Log("Succes");
                     currencyHandler.GetComponent<Currency>().loseSouls(upgrade1Cost);
-                    stats.damage += 0.5f;
+                    stats.extraDamage += 0.5f;
+                    stats.UpdateData();
+                    BoughtUpgrade1();
+                    upgradeSource.Play();
                 }
                 else
                 {
@@ -115,13 +140,16 @@ public class TowerUpgrades : MonoBehaviour
     {
         switch (upgrade2Name)
         {
-            case "FireRate":
+            case "+FireRate":
                 if (currencyHandler.GetComponent<Currency>().souls >= upgrade2Cost)
                 {
 
                     stats.moneySpent += upgrade1Cost;
                     currencyHandler.GetComponent<Currency>().loseSouls(upgrade2Cost);
-                    stats.fireRate += 1;
+                    stats.extraFireRate += 1;
+                    stats.UpdateData();
+                    BoughtUpgrade2();
+                    upgradeSource.Play();
                 }
                 else
                 {
@@ -146,11 +174,13 @@ public class TowerUpgrades : MonoBehaviour
         Upgrade upgrade1 = upgrades[0];
         upgrade1Name = upgrade1.name;
         upgrade1Cost = upgrade1.cost;
-        upgrade1Text.text = upgrade1Name + "\nSouls: " + upgrade1Cost;
+        upgrade1Text.text = upgrade1Name;
+        upgrade1CostText.text = upgrade1Cost.ToString() + " souls";
 
         Upgrade upgrade2 = upgrades[1];
         upgrade2Name = upgrade2.name;
         upgrade2Cost = upgrade2.cost;
-        upgrade2Text.text = upgrade2Name + "\nSouls: " + upgrade2Cost;
+        upgrade2Text.text = upgrade2Name;
+        upgrade2CostText.text = upgrade2Cost.ToString() + " souls";
     }
 }

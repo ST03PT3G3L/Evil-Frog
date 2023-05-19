@@ -5,19 +5,12 @@ using UnityEngine;
 public class SharpeningStone : MonoBehaviour
 {
     public float Amount;
-    [SerializeField] List<Tower> towers;
-
-    private void Start()
-    {
-        OnBuy();
-    }
 
     public void OnBuy()
     {
-        int i = 0;
-        foreach (Tower tower in towers)
+        foreach (GameObject tower in TowerPool.towerPool)
         {
-            boostDamage(tower);
+            boostDamage(tower.GetComponent<Tower>());
         }
 
         foreach (GameObject tower in GameObject.FindGameObjectsWithTag("Turret"))
@@ -28,9 +21,16 @@ public class SharpeningStone : MonoBehaviour
 
     public void boostDamage(Tower tower)
     {
-        if (tower.type == "sharp")
+        if(tower != null)
         {
-            tower.damage += Amount;
+            if (tower.type != null)
+            {
+                if (tower.type == "sharp")
+                {
+                    tower.extraDamage += Amount;
+                }
+            }
+            tower.UpdateData();
         }
     }
 }

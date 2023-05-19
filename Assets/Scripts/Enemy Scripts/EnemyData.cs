@@ -10,7 +10,6 @@ public class EnemyData : ScriptableObject
     public float maxHP_;
     public float speed_;
     public float worth_;
-    public string type_;
 
     //public SpriteRenderer sprite;
 }

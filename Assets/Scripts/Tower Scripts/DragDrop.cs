@@ -7,15 +7,31 @@ public class DragDrop : MonoBehaviour
 {
     [SerializeField] MouseHover hover;
     [SerializeField] Transform origin;
-    [SerializeField] GameObject outline;
+    [SerializeField] SpriteRenderer outline;
     private PathInventory pathInventory;
 
     public bool placeable = true;
     public bool isDragging;
 
+    [SerializeField] AudioSource dropSound;
+    [SerializeField] AudioClip[] pathPlaceSounds;
+
+    private Color defaultColor;
     void Start()
     {
         GetNeededScripts();
+        outline.enabled = false;
+        defaultColor = outline.color;
+    }
+
+    private void OnMouseEnter()
+    {
+        outline.enabled = true;
+    }
+
+    private void OnMouseExit()
+    {
+        outline.enabled = false;
     }
 
     private void GetNeededScripts()
@@ -28,22 +44,6 @@ public class DragDrop : MonoBehaviour
         if (GameObject.Find("PathInventory").GetComponent<PathInventory>() != null)
         {
             pathInventory = GameObject.Find("PathInventory").GetComponent<PathInventory>();
-        }
-    }
-
-    private void OnMouseEnter()
-    {
-        if (outline != null)
-        {
-            outline.SetActive(true);
-        }
-    }
-
-    private void OnMouseExit()
-    {
-        if (outline != null)
-        {
-            outline.SetActive(false);
         }
     }
 
@@ -66,7 +66,9 @@ public class DragDrop : MonoBehaviour
             }
             else if (!isDragging && !hover.isDraggingSomething && !EventSystem.current.IsPointerOverGameObject())
             {
-                PickUp();
+                if(gameObject.tag != "Turret"){
+                    PickUp();
+                } 
             }
         }
     }
@@ -93,12 +95,12 @@ public class DragDrop : MonoBehaviour
             if (collision.gameObject.layer == 7)
             {
                 placeable = false;
-                outline.GetComponent<SpriteRenderer>().color = Color.red;
+                //outline.color = Color.red;
             }
             else
             {
                 placeable = true;
-                outline.GetComponent<SpriteRenderer>().color = Color.green;
+               // outline.color = defaultColor;
             }
         }
     }
@@ -107,7 +109,7 @@ public class DragDrop : MonoBehaviour
     {
         if (gameObject.tag == "Path")
         {
-            if(pathInventory == null || hover == null)
+            if (pathInventory == null || hover == null)
             {
                 GetNeededScripts();
             }
@@ -115,6 +117,8 @@ public class DragDrop : MonoBehaviour
         }
         hover.isDraggingSomething = true;
         isDragging = true;
+
+
     }
 
     public void DropDown()
@@ -127,8 +131,33 @@ public class DragDrop : MonoBehaviour
             {
                 gameObject.GetComponent<PathCollision>().CheckCollisions();
                 StartCoroutine(timer());
+                PlayPathSound();
+            }
+            if (gameObject.tag == "Turret")
+            {
+                TowerUI myUI = GetComponent<TowerUI>();
+                if (myUI != null) {
+                    myUI.ResetUI();
+                    myUI.clickable = true;
+                }
             }
         }
+    }
+
+    private void PlayPathSound()
+    {
+        int n = Random.Range(1, pathPlaceSounds.Length);
+        dropSound.clip = pathPlaceSounds[n];
+
+        dropSound.PlayOneShot(dropSound.clip);
+
+        pathPlaceSounds[n] = pathPlaceSounds[0];
+        pathPlaceSounds[0] = dropSound.clip;
+    }
+
+    public void EnableMovement()
+    {
+        PickUp();
     }
 
 }

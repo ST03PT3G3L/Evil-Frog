@@ -9,8 +9,19 @@ public class RewardManager : MonoBehaviour
     [SerializeField] private GameObject choice1;
     [SerializeField] private GameObject choice2;
     [SerializeField] private string[] choices;
+    [SerializeField] private GameObject itemChest;
+    [SerializeField] private GameObject pathInventory;
     public ModuleData[] moduleStats;
     public GameObject modulePrefab;
+
+    private void Start()
+    {
+        RewardChoiceManager choiceM1 = choice1.GetComponent<RewardChoiceManager>();
+        RewardChoiceManager choiceM2 = choice2.GetComponent<RewardChoiceManager>();
+
+        choiceM1.GetComponent<RewardChoiceManager>().SetMoney();
+        choiceM2.GetComponent<RewardChoiceManager>().SetSouls();
+    }
 
     public void ChooseMoney()
     {
@@ -27,13 +38,14 @@ public class RewardManager : MonoBehaviour
         reward = "Module";
     }
 
-    private void Update()
+    public void ChooseItem()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            ChooseModule();
-            EndWave();
-        }
+        reward = "Item";
+    }
+
+    public void ChoosePaths()
+    {
+        reward = "Paths";
     }
 
     public void StartWave()
@@ -68,6 +80,16 @@ public class RewardManager : MonoBehaviour
                 module.transform.SetParent(this.transform);
                 module.GetComponent<ModuleStats>().data = data;
                 break;
+            case "Item":
+                Instantiate(itemChest, new Vector3(-2, 7, 0), Quaternion.identity);
+                break;
+            case "Paths":
+                for(int i = 0; i < 2; i++)
+                {
+                    pathInventory.GetComponent<PathInventory>().PathsHolding += 1;
+                }
+                pathInventory.GetComponent<PathInventory>().UpdateText();
+                break;
         }
         RandomizeRewards();
         
@@ -95,6 +117,12 @@ public class RewardManager : MonoBehaviour
             case "Module":
                 choiceM1.GetComponent<RewardChoiceManager>().SetModule();
                 break;
+            case "Item":
+                choiceM1.GetComponent<RewardChoiceManager>().SetItem();
+                break;
+            case "Paths":
+                choiceM1.GetComponent<RewardChoiceManager>().SetPaths();
+                break;
         }
 
         int rnd2 = -1;
@@ -115,6 +143,12 @@ public class RewardManager : MonoBehaviour
                 break;
             case "Module":
                 choiceM2.GetComponent<RewardChoiceManager>().SetModule();
+                break;
+            case "Item":
+                choiceM2.GetComponent<RewardChoiceManager>().SetItem();
+                break;
+            case "Paths":
+                choiceM1.GetComponent<RewardChoiceManager>().SetPaths();
                 break;
         }
     }

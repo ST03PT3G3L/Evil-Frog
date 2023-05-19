@@ -16,6 +16,7 @@ public class Item : MonoBehaviour
     private void Start()
     {
         UpdateData();
+        BroadcastMessage("OnBuy", SendMessageOptions.DontRequireReceiver);
     }
 
     public void UpdateData()

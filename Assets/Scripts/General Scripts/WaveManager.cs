@@ -2,20 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class WaveManager : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI waveCountText;
     [SerializeField] private GameObject merchantObject;
-    private MapExpanding expander;
+    [SerializeField] TextMeshProUGUI waveCountText;
+    [SerializeField] private GameObject help;
     public GameObject player;
     public GameObject[] enemySpawners;
+    private MapExpanding expander;
+    private bool chosenReward = false;
 
     public int roundNumber = 0;
     public int space = 1;
     private int totalWaves;
 
     private bool waveStarted = false;
+
+    [SerializeField] private AudioMixerSnapshot outOfBattle;
+    [SerializeField] private AudioMixerSnapshot inToBattle;
 
     [System.Serializable]
     public class Round
@@ -28,9 +34,9 @@ public class WaveManager : MonoBehaviour
 
     private void Start()
     {
-        expander = GetComponent<MapExpanding>();
         totalWaves = rounds.Count;
         waveCountText.text = roundNumber + "/" + totalWaves;
+        expander = GetComponent<MapExpanding>();
     }
 
     void Update()
@@ -44,6 +50,7 @@ public class WaveManager : MonoBehaviour
         {
             ModeManager.editMode = false;
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            Debug.Log(enemies.Length);
             if (enemies.Length == 0)
             {
                 WaveEnd();
@@ -58,15 +65,22 @@ public class WaveManager : MonoBehaviour
 
     public void StartRound()
     {
-        if (GameObject.FindGameObjectWithTag("Merchant") != null)
+        if (chosenReward)
         {
-            Destroy(GameObject.FindGameObjectWithTag("Merchant"));
-        }
+            waveStarted = true;
+            int wave = roundNumber + 1;
+            waveCountText.text = wave + "/" + totalWaves;
+            StartCoroutine(InitiateNextRound());
 
-        waveStarted = true;
-        int wave = roundNumber + 1;
-        waveCountText.text = wave + "/" + totalWaves;
-        StartCoroutine(InitiateNextRound());
+            if (GameObject.FindGameObjectWithTag("Merchant") != null)
+            {
+                Destroy(GameObject.FindGameObjectWithTag("Merchant"));
+            }
+
+            inToBattle.TransitionTo(1f);
+
+            expander.info.SetActive(false);
+        }
     }
 
     IEnumerator InitiateNextRound()
@@ -103,16 +117,27 @@ public class WaveManager : MonoBehaviour
 
     private void WaveEnd()
     {
+        outOfBattle.TransitionTo(1f);
         ModeManager.editMode = true;
         waveStarted = false;
         BroadcastMessage("EndWave");
+        GameObject.Find("Soul Forge").GetComponentInChildren<SoulForge>().setupShop(false);
         roundNumber++;
 
-        if (merchantObject != null && roundNumber % 2 == 0 && roundNumber != 0) 
-        { 
-            Instantiate(merchantObject, merchantObject.GetComponent<MerchantArrival>().startPos, Quaternion.identity); 
-        }
-        if (expander != null) 
+        if (expander != null)
         { expander.Expand(roundNumber); }
+
+        if (merchantObject != null && roundNumber % 2 == 0 && roundNumber != 0)
+        {
+            Instantiate(merchantObject, merchantObject.GetComponent<MerchantArrival>().startPos, Quaternion.identity);
+        }
+
+        chosenReward = false;
+        help.SetActive(false);
+    }
+
+    public void RewardChosen()
+    {
+        chosenReward = true;
     }
 }

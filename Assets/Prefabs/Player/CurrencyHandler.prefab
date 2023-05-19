@@ -45,6 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moneyText: {fileID: 0}
-  money: 10
+  money: 0
   soulsText: {fileID: 0}
   souls: 10

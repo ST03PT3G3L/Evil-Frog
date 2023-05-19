@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6ab61a6cd39be542b7770b799860f0c, type: 3}
+  m_Name: Sniper Tower
+  m_EditorClassIdentifier: 
+  name_: Sniper Tower
+  fireRate_: 0.5
+  range_: 100
+  damage_: 5
+  price_: 15
+  type_: sharp
+  bulletPrefab_: {fileID: 9138025207320898521, guid: 4b636ad39b9bd2f47b36584aa685df6e, type: 3}
+  description_: Very big range

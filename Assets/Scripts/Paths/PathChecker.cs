@@ -11,7 +11,7 @@ public class PathChecker : MonoBehaviour
     {
         if(collision.gameObject.tag == "Lair")
         {
-            Debug.Log("Path is complete!");
+           // Debug.Log("Path is complete!");
             Destroy(gameObject);
         }
         else timer++;
@@ -52,7 +52,7 @@ public class PathChecker : MonoBehaviour
         StartCoroutine(TimerDown());
         if (timer <= 0)
         {
-            //Debug.Log("Can't reach Lair!");
+            Debug.Log("Can't reach Lair!");
             Destroy(gameObject);
         }
     }

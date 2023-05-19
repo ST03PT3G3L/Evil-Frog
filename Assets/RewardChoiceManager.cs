@@ -16,6 +16,8 @@ public class RewardChoiceManager : MonoBehaviour
         gameObject.GetComponent<Button>().onClick.RemoveListener(Money_onClick);
         gameObject.GetComponent<Button>().onClick.RemoveListener(Souls_onClick);
         gameObject.GetComponent<Button>().onClick.RemoveListener(Module_onClick);
+        gameObject.GetComponent<Button>().onClick.RemoveListener(Item_onClick);
+        gameObject.GetComponent<Button>().onClick.RemoveListener(Paths_onClick);
         gameObject.GetComponent<Button>().onClick.AddListener(Money_onClick);
     }
 
@@ -26,6 +28,8 @@ public class RewardChoiceManager : MonoBehaviour
         gameObject.GetComponent<Button>().onClick.RemoveListener(Money_onClick);
         gameObject.GetComponent<Button>().onClick.RemoveListener(Souls_onClick);
         gameObject.GetComponent<Button>().onClick.RemoveListener(Module_onClick);
+        gameObject.GetComponent<Button>().onClick.RemoveListener(Item_onClick);
+        gameObject.GetComponent<Button>().onClick.RemoveListener(Paths_onClick);
         gameObject.GetComponent<Button>().onClick.AddListener(Souls_onClick);
     }
 
@@ -36,7 +40,35 @@ public class RewardChoiceManager : MonoBehaviour
         gameObject.GetComponent<Button>().onClick.RemoveListener(Money_onClick);
         gameObject.GetComponent<Button>().onClick.RemoveListener(Souls_onClick);
         gameObject.GetComponent<Button>().onClick.RemoveListener(Module_onClick);
+        gameObject.GetComponent<Button>().onClick.RemoveListener(Item_onClick);
+        gameObject.GetComponent<Button>().onClick.RemoveListener(Paths_onClick);
         gameObject.GetComponent<Button>().onClick.AddListener(Module_onClick);
+    }
+
+    public void SetItem()
+    {
+        buttonText.text = "Item";
+
+        gameObject.GetComponent<Button>().onClick.RemoveListener(Money_onClick);
+        gameObject.GetComponent<Button>().onClick.RemoveListener(Souls_onClick);
+        gameObject.GetComponent<Button>().onClick.RemoveListener(Item_onClick);
+        gameObject.GetComponent<Button>().onClick.RemoveListener(Module_onClick);
+        gameObject.GetComponent<Button>().onClick.RemoveListener(Paths_onClick);
+
+        gameObject.GetComponent<Button>().onClick.AddListener(Item_onClick);
+    }
+
+    public void SetPaths()
+    {
+        buttonText.text = "Paths";
+
+        gameObject.GetComponent<Button>().onClick.RemoveListener(Money_onClick);
+        gameObject.GetComponent<Button>().onClick.RemoveListener(Souls_onClick);
+        gameObject.GetComponent<Button>().onClick.RemoveListener(Item_onClick);
+        gameObject.GetComponent<Button>().onClick.RemoveListener(Module_onClick);
+        gameObject.GetComponent<Button>().onClick.RemoveListener(Paths_onClick);
+
+        gameObject.GetComponent<Button>().onClick.AddListener(Paths_onClick);
     }
 
     void Money_onClick()
@@ -55,5 +87,16 @@ public class RewardChoiceManager : MonoBehaviour
     {
         Debug.Log("Module");
         rewardManager.ChooseModule();
+    }
+
+    void Item_onClick()
+    {
+        Debug.Log("Item");
+        rewardManager.ChooseItem();
+    }
+
+    void Paths_onClick()
+    {
+        rewardManager.ChoosePaths();
     }
 }

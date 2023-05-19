@@ -115,3 +115,5 @@ MonoBehaviour:
   speed: 50
   explosionEffect: {fileID: 57144948416631123, guid: acea7c1e4ca31994484ebad8b9e34c22, type: 3}
   type: 1
+  attribute1: 0
+  attribute2: 0

@@ -1,5 +1,7 @@
 public enum BulletType
 {
     NormalBullet,
-    ExplosiveBullet
+    ExplosiveBullet,
+    LaserBullet,
+    SniperBullet    
 }

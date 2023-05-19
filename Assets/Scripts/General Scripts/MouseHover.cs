@@ -7,10 +7,17 @@ public class MouseHover : MonoBehaviour
     public Transform currentlyHovering;
     public bool isDraggingSomething;
     public Camera cam;
+    public static SpriteRenderer cursorSprite;
+
+    private void Start()
+    {
+        cursorSprite = GetComponent<SpriteRenderer>();
+        cursorSprite.enabled = false;
+    }
 
     private void Update()
     {
-        if(Input.mousePosition != null)
+        if (Input.mousePosition != null)
         {
             Vector3 mouseWorldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
             transform.position = new Vector2(mouseWorldPosition.x, mouseWorldPosition.y);

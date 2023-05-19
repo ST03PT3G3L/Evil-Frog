@@ -14,8 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   name_: Normal Tower
   fireRate_: 1.5
-  range_: 6
+  range_: 8
   damage_: 1
   price_: 10
-  bulletPrefab_: {fileID: 9138025207320898521, guid: e86e0628936f78b49b8f1530c5617941, type: 3}
   type_: sharp
+  bulletPrefab_: {fileID: 9138025207320898521, guid: e86e0628936f78b49b8f1530c5617941, type: 3}
+  description_: Shoots arrows at the enemies
